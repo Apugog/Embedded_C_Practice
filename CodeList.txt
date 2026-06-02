@@ -1,0 +1,69 @@
+Basic C Programming
+	• Fibonacci series
+	• Prime number checks
+	• Reversing numbers
+	• Counting digits
+	• Finding GCD
+	• Palindrome checks
+	• Swapping numbers
+Arrays
+	• Finding the largest, smallest, and second-largest elements
+	• In-place reversal
+	• Rotating by N positions
+	• Removing duplicates from sorted arrays
+	• Merging sorted arrays
+	• Matrix operations (addition and transpose)
+Strings (Without Library Functions)
+	• Finding length
+	• In-place reversal
+	• Palindrome checks
+	• Counting vowels, consonants, and digits
+	• String comparison
+	• Custom string copy (handling address overlapping)
+	• Frequency counting
+	• Removing spaces
+Pointers
+	• Swapping numbers
+	• Array traversal and reversal
+	• Pointer-to-pointer logic
+	• Printing elements
+	• Modifying variables within functions
+	• Implementing callback functions
+Structures and Unions
+	• Defining complex structures (student or employee records)
+	• Initialization
+	• Array of structures
+	• Passing by value and pointer
+	• Calculating memory size with padding
+	• Using nested structures
+Bit Manipulation
+	• Setting, clearing, and toggling bits
+	• Checking if a bit is set
+	• Counting set bits
+	• Checking even or odd parity
+	• Swapping using XOR
+	• Using masks to set or clear multiple bits
+Recursion
+	• Factorials
+	• Fibonacci sequences
+	• Sum of digits
+	• String reversal while managing stack flow and base conditions
+Searching & Sorting
+	• Linear search
+	• Binary search (iterative and recursive)
+	• Bubble sort
+	• Selection sort
+	• Insertion sort
+Linked Lists
+	• Dynamic memory allocation
+	• Creating singly linked lists
+	• Traversal
+	• Inserting nodes at the beginning or end
+	• Deleting nodes by value
+	• Counting nodes
+	• Reversing the list
+Stacks & Queues
+	• Implementing using arrays
+	• Managing push, pop, enqueue, and dequeue operations
+	• Handling overflow and underflow conditions
+Implementing queues using stacks (and vice-versa)

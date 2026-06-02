@@ -1,0 +1,57 @@
+Start testing: Jun 02 12:44 India Standard Time
+----------------------------------------------------------
+1/2 Testing: FibonacciTest.HandlesZeroInput
+1/2 Test: FibonacciTest.HandlesZeroInput
+Command: "C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build/run_tests.exe" "--gtest_filter=FibonacciTest.HandlesZeroInput" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build
+"FibonacciTest.HandlesZeroInput" start time: Jun 02 12:44 India Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FibonacciTest.HandlesZeroInput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FibonacciTest
+[ RUN      ] FibonacciTest.HandlesZeroInput
+Count must be greater than 0.
+[       OK ] FibonacciTest.HandlesZeroInput (0 ms)
+[----------] 1 test from FibonacciTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"FibonacciTest.HandlesZeroInput" end time: Jun 02 12:44 India Standard Time
+"FibonacciTest.HandlesZeroInput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: FibonacciTest.HandlesSmallInput
+2/2 Test: FibonacciTest.HandlesSmallInput
+Command: "C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build/run_tests.exe" "--gtest_filter=FibonacciTest.HandlesSmallInput" "--gtest_also_run_disabled_tests"
+Directory: C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build
+"FibonacciTest.HandlesSmallInput" start time: Jun 02 12:44 India Standard Time
+Output:
+----------------------------------------------------------
+Note: Google Test filter = FibonacciTest.HandlesSmallInput
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FibonacciTest
+[ RUN      ] FibonacciTest.HandlesSmallInput
+Fibonacci (5 terms): 0, 1, 1, 2, 3.
+[       OK ] FibonacciTest.HandlesSmallInput (0 ms)
+[----------] 1 test from FibonacciTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FibonacciTest.HandlesSmallInput" end time: Jun 02 12:44 India Standard Time
+"FibonacciTest.HandlesSmallInput" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 02 12:44 India Standard Time
