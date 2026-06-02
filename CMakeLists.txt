@@ -14,6 +14,8 @@ find_package(GTest REQUIRED)
 add_executable(run_tests 
     tests/test_fibonacci.cpp
     1_Basic_C_Programming/1.1_Fibonacci_series.c
+    tests/test_prime.cpp
+    1_Basic_C_Programming/1.2_Prime_number_checks.c
 )
 
 # Link to gtest

@@ -1,5 +1,5 @@
-#include "1.1_Fibonacci_series.h"
 #include <stdio.h>
+#include <stdint.h>
 
 /**
  * @brief Prints the first n Fibonacci numbers.

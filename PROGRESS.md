@@ -4,7 +4,7 @@
 - **Start Date:** 2026-05-31
 - **Focus:** Embedded C Programming (Efficiency, Robustness, Hardware Awareness)
 - **Environment:** Windows (win32)
-- **Goal:** Complete all exercises in the `2026_C_practice` folder with "Senior Embedded Engineer" quality.
+- **Goal:** Behave as a Subject Matter Expert and help user complete all exercises in the `2026_C_practice` folder with "Senior Embedded Engineer" quality.
 
 ## Master Progress Table
 

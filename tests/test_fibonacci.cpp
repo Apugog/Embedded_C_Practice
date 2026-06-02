@@ -1,5 +1,9 @@
 #include <gtest/gtest.h>
-#include "../1_Basic_C_Programming/1.1_Fibonacci_series.h"
+
+// Link the C implementation
+extern "C" {
+    void print_fibonacci(uint8_t n);
+}
 
 // Note: Since print_fibonacci prints to stdout, testing it directly 
 // usually involves capturing stdout. For this basic example, 
