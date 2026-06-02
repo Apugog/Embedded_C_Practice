@@ -1,0 +1,31 @@
+# Build directories
+build/
+bin/
+obj/
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/
+
+# Executables
+*.exe
+*.out
+*.app
+a.exe
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+Thumbs.db
+.DS_Store

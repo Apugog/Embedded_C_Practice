@@ -1,5 +1,0 @@
-add_test([=[FibonacciTest.HandlesZeroInput]=]  C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build/run_tests.exe [==[--gtest_filter=FibonacciTest.HandlesZeroInput]==] --gtest_also_run_disabled_tests)
-set_tests_properties([=[FibonacciTest.HandlesZeroInput]=]  PROPERTIES DEF_SOURCE_LINE [==[C:\Users\chaud\OneDrive\Desktop\2026_C_practice\tests\test_fibonacci.cpp:10]==] WORKING_DIRECTORY C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-add_test([=[FibonacciTest.HandlesSmallInput]=]  C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build/run_tests.exe [==[--gtest_filter=FibonacciTest.HandlesSmallInput]==] --gtest_also_run_disabled_tests)
-set_tests_properties([=[FibonacciTest.HandlesSmallInput]=]  PROPERTIES DEF_SOURCE_LINE [==[C:\Users\chaud\OneDrive\Desktop\2026_C_practice\tests\test_fibonacci.cpp:16]==] WORKING_DIRECTORY C:/Users/chaud/OneDrive/Desktop/2026_C_practice/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-set(  run_tests_TESTS FibonacciTest.HandlesZeroInput FibonacciTest.HandlesSmallInput)

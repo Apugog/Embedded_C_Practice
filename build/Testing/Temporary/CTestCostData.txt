@@ -1,3 +1,0 @@
-FibonacciTest.HandlesZeroInput 2 0.008465
-FibonacciTest.HandlesSmallInput 2 0.0072671
----
