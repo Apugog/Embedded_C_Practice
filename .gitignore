@@ -19,6 +19,7 @@ Testing/
 *.out
 *.app
 a.exe
+*.cmake
 
 # IDE/Editor specific
 .vscode/

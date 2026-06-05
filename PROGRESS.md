@@ -11,7 +11,7 @@
 | Topic | Sub-Topic | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | **1. Basic C** | 1.1 Fibonacci | 🚀 Optimized | Expert refactor: overflow safety, single loop. |
-| | 1.2 Prime Checks | 🟡 In Progress | Next goal: O(sqrt(n)) efficiency. |
+| | 1.2 Prime Checks | 🚀 Optimized | O(sqrt(n)) via 6k+/-1 logic. Overflow safe (i <= n/i). |
 | | 1.3 Reversing Numbers| ⚪ Not Started | |
 | | 1.4 Counting Digits | ⚪ Not Started | |
 | | 1.5 Finding GCD | ⚪ Not Started | |
@@ -29,6 +29,7 @@
 
 ## Technical Key Takeaways
 - *[2026-05-31]*: Initiated practice. Discussed the importance of `stdint.h` and iterative approaches over recursion for stack safety in embedded systems.
+- *[2026-06-02]*: Optimized Prime Number check to O(sqrt(n)). Implemented overflow-safe loop condition `i <= n / i` to prevent infinite loops on large 32-bit inputs. Integrated GoogleTest for performance benchmarking.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
