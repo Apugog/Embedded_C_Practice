@@ -12,7 +12,7 @@
 | :--- | :--- | :--- | :--- |
 | **1. Basic C** | 1.1 Fibonacci | 🚀 Optimized | Expert refactor: overflow safety, single loop. |
 | | 1.2 Prime Checks | 🚀 Optimized | O(sqrt(n)) via 6k+/-1 logic. Overflow safe (i <= n/i). |
-| | 1.3 Reversing Numbers| ⚪ Not Started | |
+| | 1.3 Reversing Numbers| 🚀 Optimized | Signed int32_t safety, explicit overflow checks for MAX/MIN. |
 | | 1.4 Counting Digits | ⚪ Not Started | |
 | | 1.5 Finding GCD | ⚪ Not Started | |
 | | 1.6 Palindrome | ⚪ Not Started | |

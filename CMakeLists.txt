@@ -16,6 +16,8 @@ add_executable(run_tests
     1_Basic_C_Programming/1.1_Fibonacci_series.c
     tests/test_prime.cpp
     1_Basic_C_Programming/1.2_Prime_number_checks.c
+    tests/test_reverse.cpp
+    1_Basic_C_Programming/1.3_Reversing_numbers.c
 )
 
 # Link to gtest
