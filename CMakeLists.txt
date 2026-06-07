@@ -18,6 +18,8 @@ add_executable(run_tests
     1_Basic_C_Programming/1.2_Prime_number_checks.c
     tests/test_reverse.cpp
     1_Basic_C_Programming/1.3_Reversing_numbers.c
+    tests/test_count_digits.cpp
+    1_Basic_C_Programming/1.4_Counting_digits.c
 )
 
 # Link to gtest
