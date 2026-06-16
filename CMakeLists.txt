@@ -20,6 +20,12 @@ add_executable(run_tests
     1_Basic_C_Programming/1.3_Reversing_numbers.c
     tests/test_count_digits.cpp
     1_Basic_C_Programming/1.4_Counting_digits.c
+    tests/test_gcd.cpp
+    1_Basic_C_Programming/1.5_Finding_GCD.c
+    tests/test_palindrome.cpp
+    1_Basic_C_Programming/1.6_Palindrome_checks.c
+    tests/test_swap.cpp
+    1_Basic_C_Programming/1.7_Swapping_numbers.c
 )
 
 # Link to gtest
