@@ -26,6 +26,8 @@ add_executable(run_tests
     1_Basic_C_Programming/1.6_Palindrome_checks.c
     tests/test_swap.cpp
     1_Basic_C_Programming/1.7_Swapping_numbers.c
+    tests/test_array_ops.cpp
+    2_Arrays/2.1_Finding_the_largest_smallest_and_second-largest_elements.c
 )
 
 # Link to gtest

@@ -1,0 +1,331 @@
+{
+  "tests": 53,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "ArrayLargestTests",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "StandardArray",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 19
+        },
+        {
+          "name": "NegativesAndPositives",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 26
+        },
+        {
+          "name": "SingleElement",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 33
+        },
+        {
+          "name": "NullOrEmpty",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "name": "ArraySmallestTests",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "StandardArray",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 48
+        },
+        {
+          "name": "NegativesAndPositives",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 55
+        },
+        {
+          "name": "NullOrEmpty",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "name": "ArraySecondLargestTests",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "StandardArray",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 70
+        },
+        {
+          "name": "DuplicateMax",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 77
+        },
+        {
+          "name": "AllDuplicates",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 84
+        },
+        {
+          "name": "SingleElement",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 90
+        },
+        {
+          "name": "BoundaryMin",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_array_ops.cpp",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "name": "SwapTests",
+      "tests": 6,
+      "testsuite": [
+        {
+          "name": "HandlesStandardSwap",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 9
+        },
+        {
+          "name": "HandlesNegativeNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 17
+        },
+        {
+          "name": "HandlesLargeNumbersOverflow",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 25
+        },
+        {
+          "name": "HandlesDifferentLargeNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 33
+        },
+        {
+          "name": "HandlesAliasing",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 41
+        },
+        {
+          "name": "HandlesNullPointers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_swap.cpp",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "name": "PalindromeTests",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "HandlesZeroAndSingleDigits",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 9
+        },
+        {
+          "name": "HandlesEvenLengthPalindromes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 14
+        },
+        {
+          "name": "HandlesOddLengthPalindromes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 20
+        },
+        {
+          "name": "HandlesNegativeNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 25
+        },
+        {
+          "name": "HandlesNumbersEndingWithZero",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 31
+        },
+        {
+          "name": "HandlesNonPalindromes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 37
+        },
+        {
+          "name": "HandlesLargeNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_palindrome.cpp",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "name": "GCDTests",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "HandlesNormalInputs",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 8
+        },
+        {
+          "name": "HandlesPrimeInputs",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 13
+        },
+        {
+          "name": "HandlesOneNegativeInput",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 17
+        },
+        {
+          "name": "HandlesBothNegativeInputs",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 22
+        },
+        {
+          "name": "HandlesZero",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 26
+        },
+        {
+          "name": "HandlesInt32Max",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 32
+        },
+        {
+          "name": "HandlesInt32Min",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_gcd.cpp",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "name": "CountNumTests",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "HandlesZero",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 8
+        },
+        {
+          "name": "HandlesPositiveSingleDigit",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 12
+        },
+        {
+          "name": "HandlesNegativeSingleDigit",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 16
+        },
+        {
+          "name": "HandlesPositiveMultipleDigits",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 20
+        },
+        {
+          "name": "HandlesNegativeMultipleDigits",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 24
+        },
+        {
+          "name": "HandlesInt32Max",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 28
+        },
+        {
+          "name": "HandlesInt32Min",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_count_digits.cpp",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "name": "ReverseNumTests",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "HandlesPositiveNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 9
+        },
+        {
+          "name": "HandlesNegativeNumbers",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 15
+        },
+        {
+          "name": "HandlesZero",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 21
+        },
+        {
+          "name": "HandlesPositiveOverflow",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 27
+        },
+        {
+          "name": "HandlesNegativeOverflow",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 33
+        },
+        {
+          "name": "HandlesInt32MaxBoundaries",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 39
+        },
+        {
+          "name": "HandlesInt32MinBoundaries",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_reverse.cpp",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "name": "PrimeCheckTests",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "HandlesEdgeCases",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_prime.cpp",
+          "line": 11
+        },
+        {
+          "name": "HandlesSmallPrimes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_prime.cpp",
+          "line": 16
+        },
+        {
+          "name": "HandlesSmallNonPrimes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_prime.cpp",
+          "line": 25
+        },
+        {
+          "name": "HandlesLargePrimes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_prime.cpp",
+          "line": 34
+        },
+        {
+          "name": "HandlesLargeNonPrimes",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_prime.cpp",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "name": "FibonacciTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "HandlesZeroInput",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_fibonacci.cpp",
+          "line": 14
+        },
+        {
+          "name": "HandlesSmallInput",
+          "file": "C:\\Users\\chaud\\OneDrive\\Desktop\\2026_C_practice\\tests\\test_fibonacci.cpp",
+          "line": 20
+        }
+      ]
+    }
+  ]
+}
