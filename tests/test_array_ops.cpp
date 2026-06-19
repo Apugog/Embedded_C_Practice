@@ -13,6 +13,7 @@ extern "C" {
     int32_t largest(const int32_t* arr, size_t len, int32_t* result);
     int32_t smallest(const int32_t* arr, size_t len, int32_t* result);
     int32_t second_largest(int32_t* arr, size_t len, int32_t* result);
+    array_status_t reverse_array(int32_t* arr, size_t len);
 }
 
 // Largest Tests
@@ -98,4 +99,36 @@ TEST(ArraySecondLargestTests, BoundaryMin) {
     int32_t result = 0;
     EXPECT_EQ(second_largest(arr, 2, &result), ARRAY_SUCCESS);
     EXPECT_EQ(result, INT32_MIN);
+}
+
+// Reversal Tests
+TEST(ArrayReversalTests, EvenLength) {
+    int32_t arr[] = {1, 2, 3, 4};
+    EXPECT_EQ(reverse_array(arr, 4), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 4);
+    EXPECT_EQ(arr[1], 3);
+    EXPECT_EQ(arr[2], 2);
+    EXPECT_EQ(arr[3], 1);
+}
+
+TEST(ArrayReversalTests, OddLength) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    EXPECT_EQ(reverse_array(arr, 5), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 5);
+    EXPECT_EQ(arr[1], 4);
+    EXPECT_EQ(arr[2], 3);
+    EXPECT_EQ(arr[3], 2);
+    EXPECT_EQ(arr[4], 1);
+}
+
+TEST(ArrayReversalTests, SingleElement) {
+    int32_t arr[] = {42};
+    EXPECT_EQ(reverse_array(arr, 1), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 42);
+}
+
+TEST(ArrayReversalTests, NullOrEmpty) {
+    EXPECT_EQ(reverse_array(NULL, 5), ARRAY_ERR_NULL);
+    int32_t arr[] = {1};
+    EXPECT_EQ(reverse_array(arr, 0), ARRAY_ERR_EMPTY);
 }

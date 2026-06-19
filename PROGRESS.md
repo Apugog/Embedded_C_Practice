@@ -18,7 +18,7 @@
 | | 1.6 Palindrome | 🚀 Optimized | Reverses only second half to avoid overflow. Safe for negative and 0. |
 | | 1.7 Swapping | 🚀 Optimized | XOR-based swap with null check & self-aliasing safety. |
 | **2. Arrays** | 2.1 Min/Max/2nd-Max | 🚀 Optimized | Single-pass logic for 2nd max, duplicate/edge boundaries handled. |
-| | 2.2 In-place reversal | ⚪ Not Started | |
+| | 2.2 In-place reversal | 🚀 Optimized | Fixed-width types, O(1) space, boundary checks, zero-underflow safe. |
 | **3. Strings** | ... | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
@@ -37,6 +37,7 @@
 - *[2026-06-14]*: Completed 1.6 Palindrome. Implemented a branch-reduced half-reversal algorithm that completely avoids signed overflow without using 64-bit types. Handled negative numbers, numbers ending in 0, and single digits (including 0) safely. Integrated 7 GoogleTest cases. Ready for 1.7 Swapping.
 - *[2026-06-15]*: Completed 1.7 Swapping. Implemented an XOR-based swap with safety checks for null pointer dereferences and pointer aliasing. Integrated 6 GoogleTest cases. Ready for 2.1 Finding the largest, smallest, and second-largest elements in Arrays.
 - *[2026-06-17]*: Completed 2.1 Arrays (largest, smallest, second_largest). Replaced hardcoded limits initialization with safe array bounds iteration, corrected loop variable typing to prevent sign-mismatch, and implemented single-pass duplicate-max tracking. All 53 tests passing. Ready for 2.2 In-place reversal.
+- *[2026-06-20]*: Completed 2.2 In-place reversal. Implemented robust two-pointer swap using size_t indices. Prevented unsigned index underflow using strict initial validation (len == 0). Integrated 4 GoogleTest cases. Ready for 2.3 Rotating by N positions.
 
 
 

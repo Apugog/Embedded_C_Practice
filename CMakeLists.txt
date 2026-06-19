@@ -28,6 +28,7 @@ add_executable(run_tests
     1_Basic_C_Programming/1.7_Swapping_numbers.c
     tests/test_array_ops.cpp
     2_Arrays/2.1_Finding_the_largest_smallest_and_second-largest_elements.c
+    2_Arrays/2.2_In-place_reversal.c
 )
 
 # Link to gtest
