@@ -14,6 +14,13 @@ extern "C" {
     int32_t smallest(const int32_t* arr, size_t len, int32_t* result);
     int32_t second_largest(int32_t* arr, size_t len, int32_t* result);
     array_status_t reverse_array(int32_t* arr, size_t len);
+
+    typedef enum {
+        ROTATION_LEFT = 0,
+        ROTATION_RIGHT
+    } rotation_dir_t;
+
+    array_status_t rotate_array(int32_t* arr, size_t len, size_t k, rotation_dir_t dir);
 }
 
 // Largest Tests
@@ -132,3 +139,62 @@ TEST(ArrayReversalTests, NullOrEmpty) {
     int32_t arr[] = {1};
     EXPECT_EQ(reverse_array(arr, 0), ARRAY_ERR_EMPTY);
 }
+
+// Rotation Tests
+TEST(ArrayRotationTests, RotateLeft) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    EXPECT_EQ(rotate_array(arr, 5, 2, ROTATION_LEFT), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 3);
+    EXPECT_EQ(arr[1], 4);
+    EXPECT_EQ(arr[2], 5);
+    EXPECT_EQ(arr[3], 1);
+    EXPECT_EQ(arr[4], 2);
+}
+
+TEST(ArrayRotationTests, RotateRight) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    EXPECT_EQ(rotate_array(arr, 5, 2, ROTATION_RIGHT), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 4);
+    EXPECT_EQ(arr[1], 5);
+    EXPECT_EQ(arr[2], 1);
+    EXPECT_EQ(arr[3], 2);
+    EXPECT_EQ(arr[4], 3);
+}
+
+TEST(ArrayRotationTests, RotateModulo) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    // 7 % 5 = 2. Left rotation by 7 should yield the same as left rotation by 2.
+    EXPECT_EQ(rotate_array(arr, 5, 7, ROTATION_LEFT), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 3);
+    EXPECT_EQ(arr[1], 4);
+    EXPECT_EQ(arr[2], 5);
+    EXPECT_EQ(arr[3], 1);
+    EXPECT_EQ(arr[4], 2);
+}
+
+TEST(ArrayRotationTests, RotateZero) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    EXPECT_EQ(rotate_array(arr, 5, 0, ROTATION_RIGHT), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 1);
+    EXPECT_EQ(arr[1], 2);
+    EXPECT_EQ(arr[2], 3);
+    EXPECT_EQ(arr[3], 4);
+    EXPECT_EQ(arr[4], 5);
+}
+
+TEST(ArrayRotationTests, RotateFullLength) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    EXPECT_EQ(rotate_array(arr, 5, 5, ROTATION_LEFT), ARRAY_SUCCESS);
+    EXPECT_EQ(arr[0], 1);
+    EXPECT_EQ(arr[1], 2);
+    EXPECT_EQ(arr[2], 3);
+    EXPECT_EQ(arr[3], 4);
+    EXPECT_EQ(arr[4], 5);
+}
+
+TEST(ArrayRotationTests, NullOrEmpty) {
+    EXPECT_EQ(rotate_array(NULL, 5, 2, ROTATION_LEFT), ARRAY_ERR_NULL);
+    int32_t arr[] = {1};
+    EXPECT_EQ(rotate_array(arr, 0, 2, ROTATION_LEFT), ARRAY_ERR_EMPTY);
+}
+

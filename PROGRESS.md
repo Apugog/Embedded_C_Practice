@@ -19,6 +19,10 @@
 | | 1.7 Swapping | 🚀 Optimized | XOR-based swap with null check & self-aliasing safety. |
 | **2. Arrays** | 2.1 Min/Max/2nd-Max | 🚀 Optimized | Single-pass logic for 2nd max, duplicate/edge boundaries handled. |
 | | 2.2 In-place reversal | 🚀 Optimized | Fixed-width types, O(1) space, boundary checks, zero-underflow safe. |
+| | 2.3 Rotating by N positions | 🚀 Optimized | Handled size_t underflow for k=0, added static scoping to helpers. |
+| | 2.4 Removing duplicates | ⚪ Not Started | |
+| | 2.5 Merging sorted arrays | ⚪ Not Started | |
+| | 2.6 Matrix operations | ⚪ Not Started | |
 | **3. Strings** | ... | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
@@ -38,6 +42,7 @@
 - *[2026-06-15]*: Completed 1.7 Swapping. Implemented an XOR-based swap with safety checks for null pointer dereferences and pointer aliasing. Integrated 6 GoogleTest cases. Ready for 2.1 Finding the largest, smallest, and second-largest elements in Arrays.
 - *[2026-06-17]*: Completed 2.1 Arrays (largest, smallest, second_largest). Replaced hardcoded limits initialization with safe array bounds iteration, corrected loop variable typing to prevent sign-mismatch, and implemented single-pass duplicate-max tracking. All 53 tests passing. Ready for 2.2 In-place reversal.
 - *[2026-06-20]*: Completed 2.2 In-place reversal. Implemented robust two-pointer swap using size_t indices. Prevented unsigned index underflow using strict initial validation (len == 0). Integrated 4 GoogleTest cases. Ready for 2.3 Rotating by N positions.
+- *[2026-06-20]*: Completed 2.3 Rotating by N positions. Solved critical unsigned index underflow `k-1` when rotating by 0 (or multiples of length). Limited linkage scope of helper functions to static to prevent multiple definitions during test compilation. Integrated 6 GoogleTest cases. Ready for 2.4 Removing duplicates.
 
 
 
