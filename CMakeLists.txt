@@ -31,6 +31,8 @@ add_executable(run_tests
     2_Arrays/2.2_In-place_reversal.c
     2_Arrays/2.3_Rotating_by_N_positions.c
     2_Arrays/2.4_Removing_duplicates_from_sorted_arrays.c
+    tests/test_linked_list.cpp
+    9_Linked_Lists/9.2_Creating_singly_linked_lists.c
 )
 
 # Link to gtest
