@@ -33,6 +33,7 @@ add_executable(run_tests
     2_Arrays/2.4_Removing_duplicates_from_sorted_arrays.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
+    9_Linked_Lists/9.3_Traversal.c
 )
 
 # Link to gtest

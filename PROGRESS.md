@@ -31,7 +31,7 @@
 | **8. Search/Sort**| ... | ⚪ Not Started | |
 | **9. Linked Lists** | 9.1 Dynamic memory allocation | 🚀 Optimized | Allocated node with malloc, NULL check, and free cleanup. |
 | | 9.2 Creating singly list | 🚀 Optimized | Double-pointer construction, correct order, clean failure cleanup. |
-| | 9.3 Traversal | ⚪ Not Started | |
+| | 9.3 Traversal | 🚀 Optimized | Const-correct traversal & search, safe recursive reverse print. |
 | | 9.4 Inserting nodes | ⚪ Not Started | |
 | | 9.5 Deleting nodes | ⚪ Not Started | |
 | | 9.6 Counting nodes | ⚪ Not Started | |
@@ -52,6 +52,7 @@
 - *[2026-06-20]*: Completed 2.4 Removing duplicates from sorted arrays. Optimized with an in-place two-pointer algorithm requiring O(N) time and O(1) space. Ensured type safety (using size_t for lengths and pointers to avoid stack corruption on 64-bit systems) and null pointer protection. Integrated 5 GoogleTest cases. Ready for 2.5 Merging sorted arrays.
 - *[2026-06-21]*: Completed 9.1 Dynamic Memory Allocation. Implemented memory allocation using malloc, robust NULL checks, and free cleanup with fixed-width types (int32_t) and pointer management. Ready for 9.2 Creating singly linked lists.
 - *[2026-06-21]*: Completed 9.2 Creating singly list. Implemented a double pointer (Node** ppNext) pattern for clean node insertion without special-casing the head, maintaining array order. Resolved dangling pointer issue on allocation failure. Ready for 9.3 Traversal.
+- *[2026-06-21]*: Completed 9.3 Traversal. Implemented const-correct traversal, recursive reverse printing with a safe NULL base case, and target node searching. Prevented linkage conflicts by scoping duplicate helper functions with static. Integrated 6 GoogleTest cases. Ready for 9.4 Inserting nodes at the beginning or end.
 
 
 
