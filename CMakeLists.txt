@@ -30,6 +30,7 @@ add_executable(run_tests
     2_Arrays/2.1_Finding_the_largest_smallest_and_second-largest_elements.c
     2_Arrays/2.2_In-place_reversal.c
     2_Arrays/2.3_Rotating_by_N_positions.c
+    2_Arrays/2.4_Removing_duplicates_from_sorted_arrays.c
 )
 
 # Link to gtest

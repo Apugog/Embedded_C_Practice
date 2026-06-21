@@ -21,6 +21,7 @@ extern "C" {
     } rotation_dir_t;
 
     array_status_t rotate_array(int32_t* arr, size_t len, size_t k, rotation_dir_t dir);
+    array_status_t remove_duplicates(int32_t* arr, size_t len, size_t* new_len);
 }
 
 // Largest Tests
@@ -197,4 +198,53 @@ TEST(ArrayRotationTests, NullOrEmpty) {
     int32_t arr[] = {1};
     EXPECT_EQ(rotate_array(arr, 0, 2, ROTATION_LEFT), ARRAY_ERR_EMPTY);
 }
+
+// Remove Duplicates Tests
+TEST(RemoveDuplicatesTests, StandardDuplicates) {
+    int32_t arr[] = {1, 1, 2, 3, 3, 4};
+    size_t new_len = 0;
+    EXPECT_EQ(remove_duplicates(arr, 6, &new_len), ARRAY_SUCCESS);
+    EXPECT_EQ(new_len, 4);
+    EXPECT_EQ(arr[0], 1);
+    EXPECT_EQ(arr[1], 2);
+    EXPECT_EQ(arr[2], 3);
+    EXPECT_EQ(arr[3], 4);
+}
+
+TEST(RemoveDuplicatesTests, NoDuplicates) {
+    int32_t arr[] = {1, 2, 3, 4, 5};
+    size_t new_len = 0;
+    EXPECT_EQ(remove_duplicates(arr, 5, &new_len), ARRAY_SUCCESS);
+    EXPECT_EQ(new_len, 5);
+    EXPECT_EQ(arr[0], 1);
+    EXPECT_EQ(arr[1], 2);
+    EXPECT_EQ(arr[2], 3);
+    EXPECT_EQ(arr[3], 4);
+    EXPECT_EQ(arr[4], 5);
+}
+
+TEST(RemoveDuplicatesTests, AllDuplicates) {
+    int32_t arr[] = {42, 42, 42, 42};
+    size_t new_len = 0;
+    EXPECT_EQ(remove_duplicates(arr, 4, &new_len), ARRAY_SUCCESS);
+    EXPECT_EQ(new_len, 1);
+    EXPECT_EQ(arr[0], 42);
+}
+
+TEST(RemoveDuplicatesTests, SingleElement) {
+    int32_t arr[] = {99};
+    size_t new_len = 0;
+    EXPECT_EQ(remove_duplicates(arr, 1, &new_len), ARRAY_SUCCESS);
+    EXPECT_EQ(new_len, 1);
+    EXPECT_EQ(arr[0], 99);
+}
+
+TEST(RemoveDuplicatesTests, NullOrEmpty) {
+    size_t new_len = 0;
+    int32_t arr[] = {1, 2};
+    EXPECT_EQ(remove_duplicates(NULL, 2, &new_len), ARRAY_ERR_NULL);
+    EXPECT_EQ(remove_duplicates(arr, 2, NULL), ARRAY_ERR_NULL);
+    EXPECT_EQ(remove_duplicates(arr, 0, &new_len), ARRAY_ERR_EMPTY);
+}
+
 
