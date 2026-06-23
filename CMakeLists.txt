@@ -34,6 +34,7 @@ add_executable(run_tests
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c
+    9_Linked_Lists/9.4_Inserting_nodes_at_the_beginning_or_end.c
 )
 
 # Link to gtest

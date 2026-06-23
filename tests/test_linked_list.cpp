@@ -9,6 +9,12 @@ extern "C" {
         struct Node* next;
     } Node;
 
+    typedef enum {
+        LIST_SUCCESS = 0,
+        LIST_ERR_NULL,
+        LIST_ERR_ALLOC
+    } list_status_t;
+
     // From 9.2
     Node* create_list_from_array(const int32_t arr[], size_t size);
     void free_list(Node* head);
@@ -17,6 +23,10 @@ extern "C" {
     void print_list(const Node* head);
     void print_list_reverse(const Node* head);
     const Node* find_node(const Node* head, int32_t target);
+
+    // From 9.4
+    list_status_t insert_beg(Node** ppHead, int32_t data);
+    list_status_t insert_end(Node** ppHead, int32_t data);
 }
 
 TEST(LinkedListCreateTests, HandlesEmptyArray) {
@@ -130,3 +140,65 @@ TEST(LinkedListTraversalTests, FindNodeReturnsNullIfNotFound) {
     
     free_list(head);
 }
+
+// Insertion Tests (9.4)
+TEST(LinkedListInsertionTests, InsertBegHandlesNullHeadPointer) {
+    EXPECT_EQ(insert_beg(nullptr, 10), LIST_ERR_NULL);
+}
+
+TEST(LinkedListInsertionTests, InsertBegInsertsIntoEmptyList) {
+    Node* head = nullptr;
+    EXPECT_EQ(insert_beg(&head, 42), LIST_SUCCESS);
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 42);
+    EXPECT_EQ(head->next, nullptr);
+    free_list(head);
+}
+
+TEST(LinkedListInsertionTests, InsertBegInsertsMultipleElements) {
+    Node* head = nullptr;
+    EXPECT_EQ(insert_beg(&head, 10), LIST_SUCCESS);
+    EXPECT_EQ(insert_beg(&head, 20), LIST_SUCCESS);
+    EXPECT_EQ(insert_beg(&head, 30), LIST_SUCCESS);
+    
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 30);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 20);
+    ASSERT_NE(head->next->next, nullptr);
+    EXPECT_EQ(head->next->next->data, 10);
+    EXPECT_EQ(head->next->next->next, nullptr);
+    
+    free_list(head);
+}
+
+TEST(LinkedListInsertionTests, InsertEndHandlesNullHeadPointer) {
+    EXPECT_EQ(insert_end(nullptr, 10), LIST_ERR_NULL);
+}
+
+TEST(LinkedListInsertionTests, InsertEndInsertsIntoEmptyList) {
+    Node* head = nullptr;
+    EXPECT_EQ(insert_end(&head, 42), LIST_SUCCESS);
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 42);
+    EXPECT_EQ(head->next, nullptr);
+    free_list(head);
+}
+
+TEST(LinkedListInsertionTests, InsertEndInsertsMultipleElements) {
+    Node* head = nullptr;
+    EXPECT_EQ(insert_end(&head, 10), LIST_SUCCESS);
+    EXPECT_EQ(insert_end(&head, 20), LIST_SUCCESS);
+    EXPECT_EQ(insert_end(&head, 30), LIST_SUCCESS);
+    
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 10);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 20);
+    ASSERT_NE(head->next->next, nullptr);
+    EXPECT_EQ(head->next->next->data, 30);
+    EXPECT_EQ(head->next->next->next, nullptr);
+    
+    free_list(head);
+}
+
