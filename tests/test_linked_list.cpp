@@ -33,6 +33,9 @@ extern "C" {
 
     // From 9.6
     size_t count_node(const Node* head);
+
+    // From 9.7
+    list_status_t reverse_list(Node** ppHead);
 }
 
 TEST(LinkedListCreateTests, HandlesEmptyArray) {
@@ -321,4 +324,44 @@ TEST(LinkedListCountingTests, HandlesMultipleNodes) {
     EXPECT_EQ(count_node(head), 5U);
     free_list(head);
 }
+
+// Reversing Tests (9.7)
+TEST(LinkedListReversingTests, HandlesNullHeadPointer) {
+    EXPECT_EQ(reverse_list(nullptr), LIST_ERR_NULL);
+}
+
+TEST(LinkedListReversingTests, HandlesEmptyList) {
+    Node* head = nullptr;
+    EXPECT_EQ(reverse_list(&head), LIST_SUCCESS);
+    EXPECT_EQ(head, nullptr);
+}
+
+TEST(LinkedListReversingTests, HandlesSingleNode) {
+    const int32_t arr[] = {42};
+    Node* head = create_list_from_array(arr, 1);
+    EXPECT_EQ(reverse_list(&head), LIST_SUCCESS);
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 42);
+    EXPECT_EQ(head->next, nullptr);
+    free_list(head);
+}
+
+TEST(LinkedListReversingTests, HandlesMultipleNodes) {
+    const int32_t arr[] = {10, 20, 30, 40};
+    Node* head = create_list_from_array(arr, 4);
+    EXPECT_EQ(reverse_list(&head), LIST_SUCCESS);
+    
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 40);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 30);
+    ASSERT_NE(head->next->next, nullptr);
+    EXPECT_EQ(head->next->next->data, 20);
+    ASSERT_NE(head->next->next->next, nullptr);
+    EXPECT_EQ(head->next->next->next->data, 10);
+    EXPECT_EQ(head->next->next->next->next, nullptr);
+    
+    free_list(head);
+}
+
 

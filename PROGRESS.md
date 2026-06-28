@@ -35,7 +35,7 @@
 | | 9.4 Inserting nodes | 🚀 Optimized | Double-pointer traversal and insertion without special-casing the empty list. |
 | | 9.5 Deleting nodes | 🚀 Optimized | Double-pointer traversal to bypass and delete all matches in one pass without special-casing the head node. |
 | | 9.6 Counting nodes | 🚀 Optimized | Iterative count, const-correct, size_t return. |
-| | 9.7 Reversing list | ⚪ Not Started | |
+| | 9.7 Reversing list | 🚀 Optimized | In-place O(N) iterative reversal with three-pointer swap. |
 | **10. Stacks/Queues**| ... | ⚪ Not Started | |
 
 ## Technical Key Takeaways
@@ -56,6 +56,7 @@
 - *[2026-06-22]*: Completed 9.4 Inserting nodes. Optimized `insert_end` to use pointer-to-pointer (`Node** ppCurr`) traversal, eliminating special cases for empty lists. Added 6 GoogleTest test cases. Ready for 9.5 Deleting nodes by value.
 - *[2026-06-25]*: Completed 9.5 Deleting nodes. Implemented the double-pointer (`Node**`) traversal to delete all occurrences of a target value, eliminating special-casing for the head node. Added 8 GoogleTest test cases testing all scenarios (empty, single-node, middle, tail, multiples, null pointer input). Ready for 9.6 Counting nodes.
 - *[2026-06-28]*: Completed 9.6 Counting nodes. Implemented an iterative O(N) traversal. Ensured stack safety, const-correctness, and size_t type safety. Restrained linking conflicts of helpers via static scoping. Integrated 3 unit tests. Ready for 9.7 Reversing the list.
+- *[2026-06-28]*: Completed 9.7 Reversing list. Implemented an in-place $O(N)$ three-pointer loop to reverse the list. Handled outer `ppHead` and empty `*ppHead` list bounds safely. Added 4 unit tests covering null pointer handling, single-node lists, and multi-node sequences. Ready for 10. Stacks & Queues.
 
 
 

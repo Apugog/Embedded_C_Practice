@@ -37,6 +37,7 @@ add_executable(run_tests
     9_Linked_Lists/9.4_Inserting_nodes_at_the_beginning_or_end.c
     9_Linked_Lists/9.5_Deleting_nodes_by_value.c
     9_Linked_Lists/9.6_Counting_nodes.c
+    9_Linked_Lists/9.7_Reversing_the_list.c
 )
 
 # Link to gtest
