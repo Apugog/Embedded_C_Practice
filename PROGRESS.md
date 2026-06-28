@@ -33,8 +33,8 @@
 | | 9.2 Creating singly list | 🚀 Optimized | Double-pointer construction, correct order, clean failure cleanup. |
 | | 9.3 Traversal | 🚀 Optimized | Const-correct traversal & search, safe recursive reverse print. |
 | | 9.4 Inserting nodes | 🚀 Optimized | Double-pointer traversal and insertion without special-casing the empty list. |
-| | 9.5 Deleting nodes | ⚪ Not Started | |
-| | 9.6 Counting nodes | ⚪ Not Started | |
+| | 9.5 Deleting nodes | 🚀 Optimized | Double-pointer traversal to bypass and delete all matches in one pass without special-casing the head node. |
+| | 9.6 Counting nodes | 🚀 Optimized | Iterative count, const-correct, size_t return. |
 | | 9.7 Reversing list | ⚪ Not Started | |
 | **10. Stacks/Queues**| ... | ⚪ Not Started | |
 
@@ -54,6 +54,8 @@
 - *[2026-06-21]*: Completed 9.2 Creating singly list. Implemented a double pointer (Node** ppNext) pattern for clean node insertion without special-casing the head, maintaining array order. Resolved dangling pointer issue on allocation failure. Ready for 9.3 Traversal.
 - *[2026-06-21]*: Completed 9.3 Traversal. Implemented const-correct traversal, recursive reverse printing with a safe NULL base case, and target node searching. Prevented linkage conflicts by scoping duplicate helper functions with static. Integrated 6 GoogleTest cases. Ready for 9.4 Inserting nodes at the beginning or end.
 - *[2026-06-22]*: Completed 9.4 Inserting nodes. Optimized `insert_end` to use pointer-to-pointer (`Node** ppCurr`) traversal, eliminating special cases for empty lists. Added 6 GoogleTest test cases. Ready for 9.5 Deleting nodes by value.
+- *[2026-06-25]*: Completed 9.5 Deleting nodes. Implemented the double-pointer (`Node**`) traversal to delete all occurrences of a target value, eliminating special-casing for the head node. Added 8 GoogleTest test cases testing all scenarios (empty, single-node, middle, tail, multiples, null pointer input). Ready for 9.6 Counting nodes.
+- *[2026-06-28]*: Completed 9.6 Counting nodes. Implemented an iterative O(N) traversal. Ensured stack safety, const-correctness, and size_t type safety. Restrained linking conflicts of helpers via static scoping. Integrated 3 unit tests. Ready for 9.7 Reversing the list.
 
 
 

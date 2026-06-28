@@ -35,6 +35,8 @@ add_executable(run_tests
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c
     9_Linked_Lists/9.4_Inserting_nodes_at_the_beginning_or_end.c
+    9_Linked_Lists/9.5_Deleting_nodes_by_value.c
+    9_Linked_Lists/9.6_Counting_nodes.c
 )
 
 # Link to gtest

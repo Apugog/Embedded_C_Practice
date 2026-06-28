@@ -27,6 +27,12 @@ extern "C" {
     // From 9.4
     list_status_t insert_beg(Node** ppHead, int32_t data);
     list_status_t insert_end(Node** ppHead, int32_t data);
+
+    // From 9.5
+    list_status_t delete_node(Node** ppHead, int32_t data);
+
+    // From 9.6
+    size_t count_node(const Node* head);
 }
 
 TEST(LinkedListCreateTests, HandlesEmptyArray) {
@@ -199,6 +205,120 @@ TEST(LinkedListInsertionTests, InsertEndInsertsMultipleElements) {
     EXPECT_EQ(head->next->next->data, 30);
     EXPECT_EQ(head->next->next->next, nullptr);
     
+    free_list(head);
+}
+
+// Deletion Tests (9.5)
+TEST(LinkedListDeletionTests, DeleteNodeHandlesNullHeadPointer) {
+    EXPECT_EQ(delete_node(nullptr, 10), LIST_ERR_NULL);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeHandlesEmptyList) {
+    Node* head = nullptr;
+    EXPECT_EQ(delete_node(&head, 10), LIST_SUCCESS);
+    EXPECT_EQ(head, nullptr);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeValueNotFound) {
+    const int32_t arr[] = {10, 20, 30};
+    Node* head = create_list_from_array(arr, 3);
+    EXPECT_EQ(delete_node(&head, 40), LIST_SUCCESS);
+    
+    // Verify list is unchanged
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 10);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 20);
+    ASSERT_NE(head->next->next, nullptr);
+    EXPECT_EQ(head->next->next->data, 30);
+    EXPECT_EQ(head->next->next->next, nullptr);
+    
+    free_list(head);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeHeadSingleElement) {
+    const int32_t arr[] = {42};
+    Node* head = create_list_from_array(arr, 1);
+    EXPECT_EQ(delete_node(&head, 42), LIST_SUCCESS);
+    EXPECT_EQ(head, nullptr);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeHeadMultipleElements) {
+    const int32_t arr[] = {10, 20, 30};
+    Node* head = create_list_from_array(arr, 3);
+    EXPECT_EQ(delete_node(&head, 10), LIST_SUCCESS);
+    
+    // Verify head was updated to 20
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 20);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 30);
+    EXPECT_EQ(head->next->next, nullptr);
+    
+    free_list(head);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeMiddleElement) {
+    const int32_t arr[] = {10, 20, 30};
+    Node* head = create_list_from_array(arr, 3);
+    EXPECT_EQ(delete_node(&head, 20), LIST_SUCCESS);
+    
+    // Verify middle node is removed
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 10);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 30);
+    EXPECT_EQ(head->next->next, nullptr);
+    
+    free_list(head);
+}
+
+TEST(LinkedListDeletionTests, DeleteNodeTailElement) {
+    const int32_t arr[] = {10, 20, 30};
+    Node* head = create_list_from_array(arr, 3);
+    EXPECT_EQ(delete_node(&head, 30), LIST_SUCCESS);
+    
+    // Verify tail node is removed
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 10);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 20);
+    EXPECT_EQ(head->next->next, nullptr);
+    
+    free_list(head);
+}
+
+TEST(LinkedListDeletionTests, DeleteMultipleAndConsecutiveOccurrences) {
+    const int32_t arr[] = {20, 20, 10, 20, 30, 20, 20};
+    Node* head = create_list_from_array(arr, 7);
+    EXPECT_EQ(delete_node(&head, 20), LIST_SUCCESS);
+    
+    // Verify all occurrences of 20 are removed
+    ASSERT_NE(head, nullptr);
+    EXPECT_EQ(head->data, 10);
+    ASSERT_NE(head->next, nullptr);
+    EXPECT_EQ(head->next->data, 30);
+    EXPECT_EQ(head->next->next, nullptr);
+    
+    free_list(head);
+}
+
+// Counting Tests (9.6)
+TEST(LinkedListCountingTests, HandlesNull) {
+    EXPECT_EQ(count_node(nullptr), 0U);
+}
+
+TEST(LinkedListCountingTests, HandlesSingleNode) {
+    const int32_t arr[] = {42};
+    Node* head = create_list_from_array(arr, 1);
+    EXPECT_EQ(count_node(head), 1U);
+    free_list(head);
+}
+
+TEST(LinkedListCountingTests, HandlesMultipleNodes) {
+    const int32_t arr[] = {10, 20, 30, 40, 50};
+    Node* head = create_list_from_array(arr, 5);
+    EXPECT_EQ(count_node(head), 5U);
     free_list(head);
 }
 
