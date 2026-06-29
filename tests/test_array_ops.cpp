@@ -5,9 +5,10 @@
 extern "C" {
     typedef enum {
         ARRAY_SUCCESS = 0,
-        ARRAY_ERR_NULL,
-        ARRAY_ERR_EMPTY,
-        ARRAY_ERR_NO_SECOND_LARGEST
+        ARRAY_ERR_NULL = 1,
+        ARRAY_ERR_EMPTY = 2,
+        ARRAY_ERR_NO_SECOND_LARGEST = 3,
+        ARRAY_ERR_INSUFFICIENT_CAPACITY = 3
     } array_status_t;
 
     int32_t largest(const int32_t* arr, size_t len, int32_t* result);
@@ -22,6 +23,9 @@ extern "C" {
 
     array_status_t rotate_array(int32_t* arr, size_t len, size_t k, rotation_dir_t dir);
     array_status_t remove_duplicates(int32_t* arr, size_t len, size_t* new_len);
+    array_status_t merge_sorted_arrays(const int32_t *arr1, size_t len1,
+                                       const int32_t *arr2, size_t len2,
+                                       int32_t *dest, size_t dest_capacity);
 }
 
 // Largest Tests
@@ -245,6 +249,77 @@ TEST(RemoveDuplicatesTests, NullOrEmpty) {
     EXPECT_EQ(remove_duplicates(NULL, 2, &new_len), ARRAY_ERR_NULL);
     EXPECT_EQ(remove_duplicates(arr, 2, NULL), ARRAY_ERR_NULL);
     EXPECT_EQ(remove_duplicates(arr, 0, &new_len), ARRAY_ERR_EMPTY);
+}
+
+// Merge Sorted Arrays Tests
+TEST(MergeSortedArraysTests, StandardMerge) {
+    int32_t arr1[] = {1, 3, 5, 7};
+    int32_t arr2[] = {2, 4, 6, 8, 10};
+    int32_t dest[9] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 4, arr2, 5, dest, 9), ARRAY_SUCCESS);
+    int32_t expected[] = {1, 2, 3, 4, 5, 6, 7, 8, 10};
+    for (size_t i = 0; i < 9; ++i) {
+        EXPECT_EQ(dest[i], expected[i]);
+    }
+}
+
+TEST(MergeSortedArraysTests, OneEmptyGraceful) {
+    int32_t arr1[] = {1, 3, 5};
+    int32_t arr2[] = {99};
+    int32_t dest[3] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 3, arr2, 0, dest, 3), ARRAY_SUCCESS);
+    EXPECT_EQ(dest[0], 1);
+    EXPECT_EQ(dest[1], 3);
+    EXPECT_EQ(dest[2], 5);
+
+    int32_t dest2[3] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 0, arr2, 1, dest2, 3), ARRAY_SUCCESS);
+    EXPECT_EQ(dest2[0], 99);
+}
+
+TEST(MergeSortedArraysTests, BothEmpty) {
+    int32_t arr1[1] = {0};
+    int32_t arr2[1] = {0};
+    int32_t dest[1] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 0, arr2, 0, dest, 1), ARRAY_ERR_EMPTY);
+}
+
+TEST(MergeSortedArraysTests, NullPointers) {
+    int32_t arr1[] = {1};
+    int32_t arr2[] = {2};
+    int32_t dest[2] = {0};
+    EXPECT_EQ(merge_sorted_arrays(NULL, 1, arr2, 1, dest, 2), ARRAY_ERR_NULL);
+    EXPECT_EQ(merge_sorted_arrays(arr1, 1, NULL, 1, dest, 2), ARRAY_ERR_NULL);
+    EXPECT_EQ(merge_sorted_arrays(arr1, 1, arr2, 1, NULL, 2), ARRAY_ERR_NULL);
+}
+
+TEST(MergeSortedArraysTests, InsufficientCapacity) {
+    int32_t arr1[] = {1, 3, 5};
+    int32_t arr2[] = {2, 4};
+    int32_t dest[5] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 3, arr2, 2, dest, 4), ARRAY_ERR_INSUFFICIENT_CAPACITY);
+}
+
+TEST(MergeSortedArraysTests, DuplicateElements) {
+    int32_t arr1[] = {1, 2, 2, 4};
+    int32_t arr2[] = {2, 3, 4};
+    int32_t dest[7] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 4, arr2, 3, dest, 7), ARRAY_SUCCESS);
+    int32_t expected[] = {1, 2, 2, 2, 3, 4, 4};
+    for (size_t i = 0; i < 7; ++i) {
+        EXPECT_EQ(dest[i], expected[i]);
+    }
+}
+
+TEST(MergeSortedArraysTests, AllGreater) {
+    int32_t arr1[] = {1, 2, 3};
+    int32_t arr2[] = {10, 11};
+    int32_t dest[5] = {0};
+    EXPECT_EQ(merge_sorted_arrays(arr1, 3, arr2, 2, dest, 5), ARRAY_SUCCESS);
+    int32_t expected[] = {1, 2, 3, 10, 11};
+    for (size_t i = 0; i < 5; ++i) {
+        EXPECT_EQ(dest[i], expected[i]);
+    }
 }
 
 

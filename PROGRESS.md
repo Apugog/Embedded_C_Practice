@@ -21,7 +21,7 @@
 | | 2.2 In-place reversal | 🚀 Optimized | Fixed-width types, O(1) space, boundary checks, zero-underflow safe. |
 | | 2.3 Rotating by N positions | 🚀 Optimized | Handled size_t underflow for k=0, added static scoping to helpers. |
 | | 2.4 Removing duplicates | 🚀 Optimized | In-place two-pointer approach, O(N) time, O(1) space, size_t safety checks. |
-| | 2.5 Merging sorted arrays | ⚪ Not Started | |
+| | 2.5 Merging sorted arrays | 🚀 Optimized | Fixed flipped capacity check condition, missing destination NULL check, and incorrect leftover loop logic. Enabled graceful merge of single empty arrays and added size_t overflow check. |
 | | 2.6 Matrix operations | ⚪ Not Started | |
 | **3. Strings** | ... | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
@@ -57,6 +57,8 @@
 - *[2026-06-25]*: Completed 9.5 Deleting nodes. Implemented the double-pointer (`Node**`) traversal to delete all occurrences of a target value, eliminating special-casing for the head node. Added 8 GoogleTest test cases testing all scenarios (empty, single-node, middle, tail, multiples, null pointer input). Ready for 9.6 Counting nodes.
 - *[2026-06-28]*: Completed 9.6 Counting nodes. Implemented an iterative O(N) traversal. Ensured stack safety, const-correctness, and size_t type safety. Restrained linking conflicts of helpers via static scoping. Integrated 3 unit tests. Ready for 9.7 Reversing the list.
 - *[2026-06-28]*: Completed 9.7 Reversing list. Implemented an in-place $O(N)$ three-pointer loop to reverse the list. Handled outer `ppHead` and empty `*ppHead` list bounds safely. Added 4 unit tests covering null pointer handling, single-node lists, and multi-node sequences. Ready for 10. Stacks & Queues.
+- *[2026-06-29]*: Completed 2.5 Merging sorted arrays. Fixed logical bugs in the leftover array copy loop (`idx_1 < idx_2` condition) and the flipped destination capacity check. Added safety check for `dest == NULL` and size_t integer overflow verification. Allowed graceful merging of single empty arrays while preserving error-handling for dual empty arrays. Added 7 robust GoogleTest cases. Ready for 2.6 Matrix operations.
+
 
 
 
