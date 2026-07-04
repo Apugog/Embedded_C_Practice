@@ -38,6 +38,8 @@ add_executable(run_tests
     3_Strings_Without_Library_Functions/3.1_Finding_length.c
     tests/test_reverse_string.cpp
     3_Strings_Without_Library_Functions/3.2_In-place_reversal.c
+    tests/test_palindrome_string.cpp
+    3_Strings_Without_Library_Functions/3.3_Palindrome_checks.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c

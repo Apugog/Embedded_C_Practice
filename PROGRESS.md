@@ -25,7 +25,8 @@
 | | 2.6 Matrix operations | 🚀 Optimized | Refactored with dynamic sizing, const correctness, safe signed overflow detection, and overlap/in-place transpose protection. |
 | **3. Strings** | 3.1 Finding length | 🚀 Optimized | Pointer-based loop, const-correct, size_t safety checks, handles NULL. |
 | | 3.2 In-place reversal | 🚀 Optimized | In-place two-pointer swap, O(1) space, enum-based error statuses. Safe for NULL and empty string pointer underflow. |
-| | 3.3 Palindrome checks | ⚪ Not Started | |
+| | 3.3 Palindrome checks | 🚀 Optimized | In-place two-pointer match, O(1) space, enum-based error statuses, const-correct, safe for empty string pointer underflow. |
+| | 3.4 Counting vowels/consonants/digits | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
@@ -63,6 +64,7 @@
 - *[2026-07-02]*: Completed 2.6 Matrix operations. Refactored `matrix_add`, `matrix_transpose`, and `matrix_print` with dynamic sizing, proper const-correctness, and explicit safety checks: buffer overlap (in-place transpose for square matrices only; partial/non-square overlaps rejected) and overflow-safe signed integer addition check logic. Added 10 robust GoogleTest test cases. Ready for 3. Strings.
 - *[2026-07-04]*: Completed 3.1 Finding length. Refactored `cus_strlen` to use `const char*` for safety, `size_t` for portability/overhead optimization, and pointer arithmetic instead of array offset indexing. Added 4 GoogleTest test cases. Ready for 3.2 In-place reversal.
 - *[2026-07-04]*: Completed 3.2 In-place reversal. Refactored `reverse_string` to return a `rev_status_t` enum. Resolved a critical undefined behavior (pointer underflow before the start of the array) when input is an empty string `""` by checking `*str == '\0'` early. Added 6 GoogleTest test cases. Ready for 3.3 Palindrome checks.
+- *[2026-07-04]*: Completed 3.3 Palindrome checks. Refactored `check_palindrome` to be `const`-correct (using `const char*` for safety against read-only Flash string literals). Handled NULL pointers and avoided pointer underflow for empty strings. Added 7 GoogleTest test cases. Ready for 3.4 Counting vowels/consonants/digits.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
