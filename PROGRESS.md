@@ -22,8 +22,9 @@
 | | 2.3 Rotating by N positions | 🚀 Optimized | Handled size_t underflow for k=0, added static scoping to helpers. |
 | | 2.4 Removing duplicates | 🚀 Optimized | In-place two-pointer approach, O(N) time, O(1) space, size_t safety checks. |
 | | 2.5 Merging sorted arrays | 🚀 Optimized | Fixed flipped capacity check condition, missing destination NULL check, and incorrect leftover loop logic. Enabled graceful merge of single empty arrays and added size_t overflow check. |
-| | 2.6 Matrix operations | ⚪ Not Started | |
-| **3. Strings** | ... | ⚪ Not Started | |
+| | 2.6 Matrix operations | 🚀 Optimized | Refactored with dynamic sizing, const correctness, safe signed overflow detection, and overlap/in-place transpose protection. |
+| **3. Strings** | 3.1 Finding length | 🚀 Optimized | Pointer-based loop, const-correct, size_t safety checks, handles NULL. |
+| | 3.2 In-place reversal | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
@@ -58,11 +59,8 @@
 - *[2026-06-28]*: Completed 9.6 Counting nodes. Implemented an iterative O(N) traversal. Ensured stack safety, const-correctness, and size_t type safety. Restrained linking conflicts of helpers via static scoping. Integrated 3 unit tests. Ready for 9.7 Reversing the list.
 - *[2026-06-28]*: Completed 9.7 Reversing list. Implemented an in-place $O(N)$ three-pointer loop to reverse the list. Handled outer `ppHead` and empty `*ppHead` list bounds safely. Added 4 unit tests covering null pointer handling, single-node lists, and multi-node sequences. Ready for 10. Stacks & Queues.
 - *[2026-06-29]*: Completed 2.5 Merging sorted arrays. Fixed logical bugs in the leftover array copy loop (`idx_1 < idx_2` condition) and the flipped destination capacity check. Added safety check for `dest == NULL` and size_t integer overflow verification. Allowed graceful merging of single empty arrays while preserving error-handling for dual empty arrays. Added 7 robust GoogleTest cases. Ready for 2.6 Matrix operations.
-
-
-
-
-
+- *[2026-07-02]*: Completed 2.6 Matrix operations. Refactored `matrix_add`, `matrix_transpose`, and `matrix_print` with dynamic sizing, proper const-correctness, and explicit safety checks: buffer overlap (in-place transpose for square matrices only; partial/non-square overlaps rejected) and overflow-safe signed integer addition check logic. Added 10 robust GoogleTest test cases. Ready for 3. Strings.
+- *[2026-07-04]*: Completed 3.1 Finding length. Refactored `cus_strlen` to use `const char*` for safety, `size_t` for portability/overhead optimization, and pointer arithmetic instead of array offset indexing. Added 4 GoogleTest test cases. Ready for 3.2 In-place reversal.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
