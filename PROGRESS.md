@@ -24,7 +24,8 @@
 | | 2.5 Merging sorted arrays | 🚀 Optimized | Fixed flipped capacity check condition, missing destination NULL check, and incorrect leftover loop logic. Enabled graceful merge of single empty arrays and added size_t overflow check. |
 | | 2.6 Matrix operations | 🚀 Optimized | Refactored with dynamic sizing, const correctness, safe signed overflow detection, and overlap/in-place transpose protection. |
 | **3. Strings** | 3.1 Finding length | 🚀 Optimized | Pointer-based loop, const-correct, size_t safety checks, handles NULL. |
-| | 3.2 In-place reversal | ⚪ Not Started | |
+| | 3.2 In-place reversal | 🚀 Optimized | In-place two-pointer swap, O(1) space, enum-based error statuses. Safe for NULL and empty string pointer underflow. |
+| | 3.3 Palindrome checks | ⚪ Not Started | |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
@@ -61,6 +62,7 @@
 - *[2026-06-29]*: Completed 2.5 Merging sorted arrays. Fixed logical bugs in the leftover array copy loop (`idx_1 < idx_2` condition) and the flipped destination capacity check. Added safety check for `dest == NULL` and size_t integer overflow verification. Allowed graceful merging of single empty arrays while preserving error-handling for dual empty arrays. Added 7 robust GoogleTest cases. Ready for 2.6 Matrix operations.
 - *[2026-07-02]*: Completed 2.6 Matrix operations. Refactored `matrix_add`, `matrix_transpose`, and `matrix_print` with dynamic sizing, proper const-correctness, and explicit safety checks: buffer overlap (in-place transpose for square matrices only; partial/non-square overlaps rejected) and overflow-safe signed integer addition check logic. Added 10 robust GoogleTest test cases. Ready for 3. Strings.
 - *[2026-07-04]*: Completed 3.1 Finding length. Refactored `cus_strlen` to use `const char*` for safety, `size_t` for portability/overhead optimization, and pointer arithmetic instead of array offset indexing. Added 4 GoogleTest test cases. Ready for 3.2 In-place reversal.
+- *[2026-07-04]*: Completed 3.2 In-place reversal. Refactored `reverse_string` to return a `rev_status_t` enum. Resolved a critical undefined behavior (pointer underflow before the start of the array) when input is an empty string `""` by checking `*str == '\0'` early. Added 6 GoogleTest test cases. Ready for 3.3 Palindrome checks.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
