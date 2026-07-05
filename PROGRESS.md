@@ -26,7 +26,7 @@
 | **3. Strings** | 3.1 Finding length | 🚀 Optimized | Pointer-based loop, const-correct, size_t safety checks, handles NULL. |
 | | 3.2 In-place reversal | 🚀 Optimized | In-place two-pointer swap, O(1) space, enum-based error statuses. Safe for NULL and empty string pointer underflow. |
 | | 3.3 Palindrome checks | 🚀 Optimized | In-place two-pointer match, O(1) space, enum-based error statuses, const-correct, safe for empty string pointer underflow. |
-| | 3.4 Counting vowels/consonants/digits | ⚪ Not Started | |
+| | 3.4 Counting vowels/consonants/digits | 🚀 Optimized | Enum status, null checks, count initialization safety, case-insensitivity using bitwise OR optimization. |
 | **4. Pointers** | ... | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
@@ -65,6 +65,7 @@
 - *[2026-07-04]*: Completed 3.1 Finding length. Refactored `cus_strlen` to use `const char*` for safety, `size_t` for portability/overhead optimization, and pointer arithmetic instead of array offset indexing. Added 4 GoogleTest test cases. Ready for 3.2 In-place reversal.
 - *[2026-07-04]*: Completed 3.2 In-place reversal. Refactored `reverse_string` to return a `rev_status_t` enum. Resolved a critical undefined behavior (pointer underflow before the start of the array) when input is an empty string `""` by checking `*str == '\0'` early. Added 6 GoogleTest test cases. Ready for 3.3 Palindrome checks.
 - *[2026-07-04]*: Completed 3.3 Palindrome checks. Refactored `check_palindrome` to be `const`-correct (using `const char*` for safety against read-only Flash string literals). Handled NULL pointers and avoided pointer underflow for empty strings. Added 7 GoogleTest test cases. Ready for 3.4 Counting vowels/consonants/digits.
+- *[2026-07-05]*: Completed 3.4 Counting vowels/consonants/digits. Added enum statuses, strict null validations, and explicit struct counts zero-initialization to protect against garbage values in uninitialized stack structs. Optimized alphabetical check hierarchy with `else if` and implemented a bitwise lowercase conversion `*c | 0x20` to reduce comparison overhead for case-insensitive vowel matching. Enabled build and verified with 8 GoogleTest cases. Ready for 3.5 String comparison.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
