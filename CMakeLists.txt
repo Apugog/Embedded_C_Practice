@@ -42,6 +42,10 @@ add_executable(run_tests
     3_Strings_Without_Library_Functions/3.3_Palindrome_checks.c
     tests/test_count_vowels_consonants_digits.cpp
     3_Strings_Without_Library_Functions/3.4_Counting_vowels_consonants_and_digits.c
+    tests/test_strcmp.cpp
+    3_Strings_Without_Library_Functions/3.5_String_comparison.c
+    tests/test_strcpy.cpp
+    3_Strings_Without_Library_Functions/3.6_Custom_string_copy_handling_address_overlapping.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c
