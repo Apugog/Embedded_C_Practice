@@ -50,6 +50,8 @@ add_executable(run_tests
     3_Strings_Without_Library_Functions/3.7_Frequency_counting.c
     tests/test_remove_spaces.cpp
     3_Strings_Without_Library_Functions/3.8_Removing_spaces.c
+    tests/test_swap_ptrs.cpp
+    4_Pointers/4.1_Swapping_numbers.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c

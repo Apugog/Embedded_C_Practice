@@ -30,8 +30,13 @@
 | | 3.5 String comparison | 🚀 Optimized | Double NULL check, result pointer safety, and unsigned char cast for standard-conforming comparison. |
 | | 3.6 Custom string copy | 🚀 Optimized | In-place forward/backward copy based on pointer overlap. Shifted size_t indexing to prevent underflow/infinite loops. |
 | | 3.7 Frequency counting | 🚀 Optimized | Fixed-width types, NULL checks, capacity bounds verification, internal array initialization, and static linkage helpers. |
-| | 3.8 Removing spaces | ⚪ Not Started | |
-| **4. Pointers** | ... | ⚪ Not Started | |
+| | 3.8 Removing spaces | 🚀 Optimized | In-place removal using two-pointer approach, avoiding redundant self-assignments. |
+| **4. Pointers** | 4.1 Swapping pointer values | 🚀 Optimized | Byte-by-byte generic swap using `void*` and `unsigned char*` to avoid strict aliasing violation. |
+| | 4.2 Array traversal and reversal | ⚪ Not Started | |
+| | 4.3 Pointer-to-pointer logic | ⚪ Not Started | |
+| | 4.4 Printing elements | ⚪ Not Started | |
+| | 4.5 Modifying variables within functions | ⚪ Not Started | |
+| | 4.6 Implementing callback functions | ⚪ Not Started | |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
 | **7. Recursion** | ... | ⚪ Not Started | |
@@ -72,6 +77,7 @@
 - *[2026-07-05]*: Completed 3.4 Counting vowels/consonants/digits. Added enum statuses, strict null validations, and explicit struct counts zero-initialization to protect against garbage values in uninitialized stack structs. Optimized alphabetical check hierarchy with `else if` and implemented a bitwise lowercase conversion `*c | 0x20` to reduce comparison overhead for case-insensitive vowel matching. Enabled build and verified with 8 GoogleTest cases. Ready for 3.5 String comparison.
 - *[2026-07-07]*: Completed 3.5 String comparison. Implemented strict safety checks for pointer inputs (s1, s2, and result). cast pointers to unsigned char to prevent platform-specific signed character overflow comparison failures. Added 11 unit tests. Ready for 3.6 Custom string copy (handling address overlapping).
 - *[2026-07-09]*: Completed 3.7 Frequency counting. Implemented robust frequency analysis for lowercase 'a'-'z'. Handled NULL safety checks, output buffer capacity verification (`len < 26`), and array zero-initialization. Declared print helper as `static` to resolve linker multiple-definition errors during build. Integrated 6 GoogleTest cases. Ready for 3.8 Removing spaces.
+- *[2026-07-16]*: Completed 3.8 Removing spaces and 4.1 Swapping pointer values. Discussed void** strict aliasing and pointer representation limitations in C. Designed type-safe, standard-compliant byte-level swap for pointer targets. Verified with 4 unit tests.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
