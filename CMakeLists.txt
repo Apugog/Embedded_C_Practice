@@ -52,6 +52,10 @@ add_executable(run_tests
     3_Strings_Without_Library_Functions/3.8_Removing_spaces.c
     tests/test_swap_ptrs.cpp
     4_Pointers/4.1_Swapping_numbers.c
+    tests/test_ptr_array_ops.cpp
+    4_Pointers/4.2_Array_traversal_and_reversal.c
+    tests/test_ptr_to_ptr.cpp
+    4_Pointers/4.3_Pointer-to-pointer_logic.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c
@@ -59,6 +63,10 @@ add_executable(run_tests
     9_Linked_Lists/9.5_Deleting_nodes_by_value.c
     9_Linked_Lists/9.6_Counting_nodes.c
     9_Linked_Lists/9.7_Reversing_the_list.c
+    tests/test_lru_cache.cpp
+    9_Linked_Lists/9.8_Implementing_LRU_cache.c
+    tests/test_hash_table.cpp
+    9_Linked_Lists/9.9_Implementing_Hash_Table.c
 )
 
 # Link to gtest

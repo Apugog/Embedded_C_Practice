@@ -32,8 +32,8 @@
 | | 3.7 Frequency counting | 🚀 Optimized | Fixed-width types, NULL checks, capacity bounds verification, internal array initialization, and static linkage helpers. |
 | | 3.8 Removing spaces | 🚀 Optimized | In-place removal using two-pointer approach, avoiding redundant self-assignments. |
 | **4. Pointers** | 4.1 Swapping pointer values | 🚀 Optimized | Byte-by-byte generic swap using `void*` and `unsigned char*` to avoid strict aliasing violation. |
-| | 4.2 Array traversal and reversal | ⚪ Not Started | |
-| | 4.3 Pointer-to-pointer logic | ⚪ Not Started | |
+| | 4.2 Array traversal and reversal | 🚀 Optimized | Const-correct traversal, two-pointer array reversal, bounds underflow protection, tested with GTest. |
+| | 4.3 Pointer-to-pointer logic | 🚀 Optimized | Heap allocation via double pointer, size_t overflow guard, dangling pointer elimination on free. |
 | | 4.4 Printing elements | ⚪ Not Started | |
 | | 4.5 Modifying variables within functions | ⚪ Not Started | |
 | | 4.6 Implementing callback functions | ⚪ Not Started | |
@@ -48,6 +48,8 @@
 | | 9.5 Deleting nodes | 🚀 Optimized | Double-pointer traversal to bypass and delete all matches in one pass without special-casing the head node. |
 | | 9.6 Counting nodes | 🚀 Optimized | Iterative count, const-correct, size_t return. |
 | | 9.7 Reversing list | 🚀 Optimized | In-place O(N) iterative reversal with three-pointer swap. |
+| | 9.8 Implementing LRU cache | 🚀 Optimized | Complete $O(1)$ LRU Cache with hash table buckets, sentinel doubly-linked list, $O(1)$ get/put, and leak-free destruction. |
+| | 9.9 Implementing Hash Table | 🚀 Optimized | Chaining-based hash table using linked lists. Clean pointer traversal, collision resolution, duplicate/size management, and leak-free destruction. |
 | **10. Stacks/Queues**| ... | ⚪ Not Started | |
 
 ## Technical Key Takeaways
