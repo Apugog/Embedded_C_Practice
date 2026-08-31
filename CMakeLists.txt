@@ -56,6 +56,10 @@ add_executable(run_tests
     4_Pointers/4.2_Array_traversal_and_reversal.c
     tests/test_ptr_to_ptr.cpp
     4_Pointers/4.3_Pointer-to-pointer_logic.c
+    tests/test_print_elements.cpp
+    4_Pointers/4.4_Printing_elements.c
+    tests/test_generic_array.cpp
+    4_Pointers/4.7_Generic_array_printing.c
     tests/test_linked_list.cpp
     9_Linked_Lists/9.2_Creating_singly_linked_lists.c
     9_Linked_Lists/9.3_Traversal.c

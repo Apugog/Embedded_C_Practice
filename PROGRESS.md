@@ -34,9 +34,10 @@
 | **4. Pointers** | 4.1 Swapping pointer values | 🚀 Optimized | Byte-by-byte generic swap using `void*` and `unsigned char*` to avoid strict aliasing violation. |
 | | 4.2 Array traversal and reversal | 🚀 Optimized | Const-correct traversal, two-pointer array reversal, bounds underflow protection, tested with GTest. |
 | | 4.3 Pointer-to-pointer logic | 🚀 Optimized | Heap allocation via double pointer, size_t overflow guard, dangling pointer elimination on free. |
-| | 4.4 Printing elements | ⚪ Not Started | |
+| | 4.4 Printing elements | 🚀 Optimized | Pointer arithmetic traversal (*arr++), const-correctness, zero/null bounds handling, tested with GTest. |
 | | 4.5 Modifying variables within functions | ⚪ Not Started | |
 | | 4.6 Implementing callback functions | ⚪ Not Started | |
+| | 4.7 Generic array printing | 🚀 Optimized | Generic polymorphism via `const void*`, byte-offset stepping (`const uint8_t*`), and callback function pointers for arbitrary types. Verified with GTest. |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
 | **7. Recursion** | ... | ⚪ Not Started | |
@@ -80,6 +81,7 @@
 - *[2026-07-07]*: Completed 3.5 String comparison. Implemented strict safety checks for pointer inputs (s1, s2, and result). cast pointers to unsigned char to prevent platform-specific signed character overflow comparison failures. Added 11 unit tests. Ready for 3.6 Custom string copy (handling address overlapping).
 - *[2026-07-09]*: Completed 3.7 Frequency counting. Implemented robust frequency analysis for lowercase 'a'-'z'. Handled NULL safety checks, output buffer capacity verification (`len < 26`), and array zero-initialization. Declared print helper as `static` to resolve linker multiple-definition errors during build. Integrated 6 GoogleTest cases. Ready for 3.8 Removing spaces.
 - *[2026-07-16]*: Completed 3.8 Removing spaces and 4.1 Swapping pointer values. Discussed void** strict aliasing and pointer representation limitations in C. Designed type-safe, standard-compliant byte-level swap for pointer targets. Verified with 4 unit tests.
+- *[2026-08-31]*: Completed 4.4 Printing elements and 4.7 Generic array printing. Verified pointer arithmetic vs array indexing, strict ISO C void pointer byte-stepping via `const uint8_t*`, and callback polymorphism across primitives and custom structs. Added 12 GoogleTest unit tests in `tests/test_print_elements.cpp` and `tests/test_generic_array.cpp`. All 204 unit tests passing (100%).
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*

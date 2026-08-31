@@ -33,7 +33,7 @@ array_status_t reverse_array(int32_t* arr, size_t len)
     return ARRAY_SUCCESS;
 }
 
-void print_arr(int32_t* arr, size_t len)
+static void print_arr(int32_t* arr, size_t len)
 {
     for(size_t i = 0; i< len; i++)
         printf("%d ",arr[i]);

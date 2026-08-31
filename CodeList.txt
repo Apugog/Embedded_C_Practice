@@ -29,6 +29,7 @@ Pointers
 	• Printing elements
 	• Modifying variables within functions
 	• Implementing callback functions
+	• Generic array printing (void* and function pointers)
 Structures and Unions
 	• Defining complex structures (student or employee records)
 	• Initialization
@@ -68,4 +69,12 @@ Stacks & Queues
 	• Implementing using arrays
 	• Managing push, pop, enqueue, and dequeue operations
 	• Handling overflow and underflow conditions
-Implementing queues using stacks (and vice-versa)
+	• Implementing queues using stacks (and vice-versa)
+Embedded Software Data Structures
+	• Circular / Ring Buffer
+	• Ping-Pong Buffer (Double Buffering)
+	• Bit Fields and Bit Masks
+	• Intrusive Linked List
+	• Fixed-Size Memory Pool
+	• Finite State Machine (FSM) using Array of Function Pointers
+	• Priority Queue

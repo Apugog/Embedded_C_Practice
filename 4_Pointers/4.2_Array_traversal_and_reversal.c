@@ -8,7 +8,7 @@ typedef enum{
     ARR_SUCCESS
 } arr_status_t;
 
-static arr_status_t print_arr(const uint32_t* a, size_t len)
+arr_status_t print_arr(const uint32_t* a, size_t len)
 {
     if(a==NULL)
         return ARR_NULL;
