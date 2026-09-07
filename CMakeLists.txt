@@ -60,6 +60,8 @@ add_executable(run_tests
     4_Pointers/4.4_Printing_elements.c
     tests/test_modify_variables.cpp
     4_Pointers/4.5_Modifying_variables_within_functions.c
+    tests/test_callback.cpp
+    4_Pointers/4.6_Implementing_callback_functions.c
     tests/test_generic_array.cpp
     4_Pointers/4.7_Generic_array_printing.c
     tests/test_linked_list.cpp

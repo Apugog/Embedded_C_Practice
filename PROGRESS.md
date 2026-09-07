@@ -36,7 +36,7 @@
 | | 4.3 Pointer-to-pointer logic | 🚀 Optimized | Heap allocation via double pointer, size_t overflow guard, dangling pointer elimination on free. |
 | | 4.4 Printing elements | 🚀 Optimized | Pointer arithmetic traversal (*arr++), const-correctness, zero/null bounds handling, tested with GTest. |
 | | 4.5 Modifying variables within functions | ⚪ Not Started | |
-| | 4.6 Implementing callback functions | ⚪ Not Started | |
+| | 4.6 Implementing callback functions | 🚀 Optimized | Event-driven threshold monitor with function pointer callback, re-entrant user context pointer (`void *user_data`), HardFault-safe NULL validation, parameterized limits, and const correctness. Verified with 9 GTest cases. |
 | | 4.7 Generic array printing | 🚀 Optimized | Generic polymorphism via `const void*`, byte-offset stepping (`const uint8_t*`), and callback function pointers for arbitrary types. Verified with GTest. |
 | **5. Structures**| ... | ⚪ Not Started | |
 | **6. Bit Manipulation**| ... | ⚪ Not Started | |
@@ -82,6 +82,7 @@
 - *[2026-07-09]*: Completed 3.7 Frequency counting. Implemented robust frequency analysis for lowercase 'a'-'z'. Handled NULL safety checks, output buffer capacity verification (`len < 26`), and array zero-initialization. Declared print helper as `static` to resolve linker multiple-definition errors during build. Integrated 6 GoogleTest cases. Ready for 3.8 Removing spaces.
 - *[2026-07-16]*: Completed 3.8 Removing spaces and 4.1 Swapping pointer values. Discussed void** strict aliasing and pointer representation limitations in C. Designed type-safe, standard-compliant byte-level swap for pointer targets. Verified with 4 unit tests.
 - *[2026-08-31]*: Completed 4.4 Printing elements and 4.7 Generic array printing. Verified pointer arithmetic vs array indexing, strict ISO C void pointer byte-stepping via `const uint8_t*`, and callback polymorphism across primitives and custom structs. Added 12 GoogleTest unit tests in `tests/test_print_elements.cpp` and `tests/test_generic_array.cpp`. All 204 unit tests passing (100%).
+- *[2026-09-07]*: Completed 4.6 Implementing callback functions. Engineered an embedded threshold monitor / ADC watchdog callback architecture. Solved HardFault risks with defensive null checks (`arr == NULL || call_back == NULL`), parameterized threshold boundaries, ensured const correctness (`const uint8_t *arr`), and eliminated global variables by passing an opaque context pointer (`void *user_data`) for re-entrant state tracking. Integrated 9 GoogleTest test cases in `tests/test_callback.cpp`. All 220 unit tests passing (100%).
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
