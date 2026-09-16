@@ -77,6 +77,8 @@ add_executable(run_tests
     9_Linked_Lists/9.9_Implementing_Hash_Table.c
     tests/test_employee_record.cpp
     5_Structures_and_Unions/5.1_Defining_complex_structures_student_or_employee_records.c
+    tests/test_initialization.cpp
+    5_Structures_and_Unions/5.2_Initialization.c
 )
 
 # Link to gtest
