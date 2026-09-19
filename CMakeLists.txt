@@ -79,6 +79,8 @@ add_executable(run_tests
     5_Structures_and_Unions/5.1_Defining_complex_structures_student_or_employee_records.c
     tests/test_initialization.cpp
     5_Structures_and_Unions/5.2_Initialization.c
+    tests/test_array_of_structures.cpp
+    5_Structures_and_Unions/5.3_Array_of_structures.c
 )
 
 # Link to gtest
