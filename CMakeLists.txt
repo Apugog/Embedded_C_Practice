@@ -81,6 +81,8 @@ add_executable(run_tests
     5_Structures_and_Unions/5.2_Initialization.c
     tests/test_array_of_structures.cpp
     5_Structures_and_Unions/5.3_Array_of_structures.c
+    tests/test_pass_by_value_and_pointer.cpp
+    5_Structures_and_Unions/5.4_Passing_by_value_and_pointer.c
 )
 
 # Link to gtest
