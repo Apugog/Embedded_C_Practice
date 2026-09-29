@@ -85,6 +85,8 @@ add_executable(run_tests
     5_Structures_and_Unions/5.4_Passing_by_value_and_pointer.c
     tests/test_memory_padding.cpp
     5_Structures_and_Unions/5.5_Calculating_memory_size_with_padding.c
+    tests/test_nested_structures.cpp
+    5_Structures_and_Unions/5.6_Using_nested_structures.c
 )
 
 # Link to gtest
