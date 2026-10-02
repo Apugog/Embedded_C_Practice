@@ -50,6 +50,8 @@ add_executable(run_tests
     3_Strings_Without_Library_Functions/3.7_Frequency_counting.c
     tests/test_remove_spaces.cpp
     3_Strings_Without_Library_Functions/3.8_Removing_spaces.c
+    tests/test_integer_to_string.cpp
+    3_Strings_Without_Library_Functions/3.9_Integer_to_string.c
     tests/test_swap_ptrs.cpp
     4_Pointers/4.1_Swapping_numbers.c
     tests/test_ptr_array_ops.cpp
@@ -87,6 +89,8 @@ add_executable(run_tests
     5_Structures_and_Unions/5.5_Calculating_memory_size_with_padding.c
     tests/test_nested_structures.cpp
     5_Structures_and_Unions/5.6_Using_nested_structures.c
+    tests/test_set_clear_toggle_bits.cpp
+    6_Bit_Manipulation/6.1_Setting_clearing_and_toggling_bits.c
 )
 
 # Link to gtest

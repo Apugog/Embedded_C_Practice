@@ -22,6 +22,7 @@ Strings (Without Library Functions)
 	• Custom string copy (handling address overlapping)
 	• Frequency counting
 	• Removing spaces
+	• Integer to string conversion
 Pointers
 	• Swapping numbers
 	• Array traversal and reversal

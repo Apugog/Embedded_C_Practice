@@ -31,6 +31,7 @@
 | | 3.6 Custom string copy | 🚀 Optimized | In-place forward/backward copy based on pointer overlap. Shifted size_t indexing to prevent underflow/infinite loops. |
 | | 3.7 Frequency counting | 🚀 Optimized | Fixed-width types, NULL checks, capacity bounds verification, internal array initialization, and static linkage helpers. |
 | | 3.8 Removing spaces | 🚀 Optimized | In-place removal using two-pointer approach, avoiding redundant self-assignments. |
+| | 3.9 Integer to string | 🚀 Optimized | Custom safe itoa (two's complement INT32_MIN safety via unsigned math, bounds-checked digit extraction, in-place reversal) + standard library snprintf method. Verified with 21 GTest cases. |
 | **4. Pointers** | 4.1 Swapping pointer values | 🚀 Optimized | Byte-by-byte generic swap using `void*` and `unsigned char*` to avoid strict aliasing violation. |
 | | 4.2 Array traversal and reversal | 🚀 Optimized | Const-correct traversal, two-pointer array reversal, bounds underflow protection, tested with GTest. |
 | | 4.3 Pointer-to-pointer logic | 🚀 Optimized | Heap allocation via double pointer, size_t overflow guard, dangling pointer elimination on free. |
@@ -43,9 +44,12 @@
 | | 5.3 Array of structures | 🚀 Optimized | Multi-channel fixed sensor registry. Struct packing (24 bytes, 0 padding), lifecycle init, duplicate rejection, safe string termination, linear lookup, value/state mutator, max reading with health filtering & negative temperature safety, and state count telemetry. Verified with 25 GTest cases. |
 | | 5.4 Passing by value and pointer | 🚀 Optimized | BMS telemetry model: zero-padding 8-byte struct, pass-by-value stack isolation & 64-bit overflow safety, pass-by-pointer mutator with defensive NULL checking & signed offset boundary protection, and zero-copy const-pointer safety inspector compatible with Flash ROM (.rodata). Verified with 21 GTest cases. |
 | | 5.5 Calculating memory size with padding | 🚀 Optimized | Natural member alignment, internal & tail padding analysis (20B vs 12B reordered vs 12B packed), array stride alignment guarantee, and HardFault-safe serialization. Verified with 7 GTest cases. |
-| | 5.6 Using nested structures | 🚀 Optimized | Direct composition vs pointer containment, alignment/padding propagation across nested boundaries (no internal holes), cascading defensive initialization, and sub-object pointer passing. Verified with 5 GTest test suites. |
-| **6. Bit Manipulation**| ... | ⚪ Not Started | |
-| **7. Recursion** | ... | ⚪ Not Started | |
+| **6. Bit Manipulation**| 6.1 Setting, clearing, toggling bits | 🚀 Optimized | Idiomatic bitwise operators (`\|=`, `&= ~`, `^=`) with unsigned literals (`1U << bit`) eliminating UB on MSB (bit 31). Strict `NULL` pointer and boundary (`bit > 31`) protection. Verified with 9 GTest cases. |
+| | 6.2 Checking if a bit is set | ⚪ Not Started | |
+| | 6.3 Counting set bits | ⚪ Not Started | |
+| | 6.4 Checking even or odd parity | ⚪ Not Started | |
+| | 6.5 Swapping using XOR | ⚪ Not Started | |
+| | 6.6 Using masks to set or clear multiple bits | ⚪ Not Started | |
 | **8. Search/Sort**| ... | ⚪ Not Started | |
 | **9. Linked Lists** | 9.1 Dynamic memory allocation | 🚀 Optimized | Allocated node with malloc, NULL check, and free cleanup. |
 | | 9.2 Creating singly list | 🚀 Optimized | Double-pointer construction, correct order, clean failure cleanup. |
@@ -93,7 +97,9 @@
 - *[2026-09-21]*: Completed 5.4 Passing by value and pointer. Designed an embedded Battery Management System (BMS) telemetry monitor. Struct packing optimized to 8 bytes with zero padding overhead, fitting directly into ARM AAPCS calling registers (`r0`, `r1`). Demonstrated pass-by-value stack copy isolation and resolved compiler dead-store warnings (`-Wunused-but-set-parameter`) with MISRA C parameter void-casting. Implemented defensive pass-by-pointer mutators with NULL validation and bounds-checked signed calibration preventing wrap-around underflow/overflow. Designed zero-copy pass-by-const-pointer diagnostic inspector allowing safe access to Flash-resident (`.rodata`) configurations. Verified with 21 GoogleTest unit tests in `tests/test_pass_by_value_and_pointer.cpp`. All 293 unit tests passing (100%). Ready for 5.5 Calculating memory size with padding.
 - *[2026-09-27]*: Completed 5.5 Calculating memory size with padding. Analyzed natural member alignment, internal padding, and tail padding mechanisms. Demonstrated memory reordering (descending alignment order) saving 40% RAM overhead without compiler pragmas. Addressed embedded hardware pitfalls of packed structures (unaligned memory access HardFaults on ARM Cortex-M0/M0+) and information disclosure security risks of uninitialized padding bytes. Engineered safe wire-format serialization (`pack_sensor_payload`/`unpack_sensor_payload`) with NULL guards. Verified with 7 GoogleTest unit tests in `tests/test_memory_padding.cpp`. All 300 unit tests passing (100%). Ready for 5.6 Using nested structures.
 - *[2026-09-29]*: Completed 5.6 Using nested structures. Analyzed direct composition vs pointer containment and the "black box" rule of nested structs in C (inner struct tail padding cannot be scavenged by outer members). Eliminated internal padding holes by enforcing descending alignment order across composite types (`sizeof(calib_t) = 6B`, `sizeof(sensor_t) = 16B`). Implemented cascading defensive initialization (`sensor_init`), sub-object parameter isolation (`calib_apply`), and outer-to-inner delegation (`sensor_read`). Verified with 5 GoogleTest test suites in `tests/test_nested_structures.cpp`. All 305 unit tests passing (100%).
+- *[2026-10-02]*: Completed 6.1 Setting, clearing, and toggling bits. Addressed critical C99/MISRA C undefined behavior where left-shifting signed literals into the MSB (`1 << 31`) causes signed overflow, resolving it using unsigned integer literals (`1U << bit`). Implemented defensive parameter validations (register NULL checks and `bit > 31` boundary checks) returning typed `bit_status_t` enums. Added 9 GoogleTest unit tests in `tests/test_set_clear_toggle_bits.cpp` covering single-bit manipulation, MSB/LSB boundaries, idempotence, input validation, and hardware control register (CR) simulation. All 335 unit tests passing (100%). Ready for 6.2 Checking if a bit is set.
 
 ---
 *Status Legend: ⚪ Not Started | 🟡 In Progress | ✅ Completed | 🚀 Optimized (Interview Ready)*
+
 
