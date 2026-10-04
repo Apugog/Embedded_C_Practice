@@ -91,6 +91,8 @@ add_executable(run_tests
     5_Structures_and_Unions/5.6_Using_nested_structures.c
     tests/test_set_clear_toggle_bits.cpp
     6_Bit_Manipulation/6.1_Setting_clearing_and_toggling_bits.c
+    tests/test_check_bit.cpp
+    6_Bit_Manipulation/6.2_Checking_if_a_bit_is_set.c
 )
 
 # Link to gtest
