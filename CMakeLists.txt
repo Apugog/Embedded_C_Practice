@@ -93,6 +93,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.1_Setting_clearing_and_toggling_bits.c
     tests/test_check_bit.cpp
     6_Bit_Manipulation/6.2_Checking_if_a_bit_is_set.c
+    tests/test_count_set_bits.cpp
+    6_Bit_Manipulation/6.3_Counting_set_bits.c
 )
 
 # Link to gtest

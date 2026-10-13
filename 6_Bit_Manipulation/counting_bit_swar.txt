@@ -1,0 +1,219 @@
+================================================================================
+          SWAR (SIMD WITHIN A REGISTER) BIT COUNTING (POPCOUNT)
+                          DETAILED REFERENCE GUIDE
+================================================================================
+
+Target Function: count_bits_swar(uint32_t value)
+Context: 6.3_Counting_set_bits.c
+Time Complexity: O(1) constant time (zero branches, zero loops)
+Algorithm Origin: Often credited to Donald Knuth, Warren (Hacker's Delight),
+                  and Stanford Bit Twiddling Hacks.
+
+--------------------------------------------------------------------------------
+OVERVIEW OF SWAR
+--------------------------------------------------------------------------------
+SWAR stands for "SIMD Within A Register". It treats a standard 32-bit register
+as a vector of smaller packed fields (sub-registers) and performs operations
+on all of them simultaneously in parallel.
+
+Instead of looping through bits one by one (O(n)) or clearing set bits using 
+Brian Kernighan's algorithm (O(k) where k is the number of set bits), SWAR
+computes the population count (popcount) in a fixed sequence of bitwise
+operations, tree-folding 32 bits into a final 6-bit sum (0 to 32).
+
+================================================================================
+STAGE 1: SUM ADJACENT BIT PAIRS INTO 2-BIT FIELDS
+================================================================================
+Code:
+    value = value - ((value >> 1U) & 0x55555555U);
+
+1. High-Level Goal:
+   - Partitions the 32-bit integer into sixteen 2-bit fields.
+   - Counts set bits in each pair, replacing each 2-bit field with [0, 2].
+
+2. Mathematical Principle:
+   Any 2-bit number can be written as:
+       Value = 2 * b1 + b0
+   The sum of its set bits is:
+       Count = b1 + b0
+
+   Notice the algebraic identity:
+       (2 * b1 + b0) - b1 = b1 + b0
+   Subtracting the high bit (b1) from the 2-bit value directly yields the count!
+
+   Verification across all four possible 2-bit states:
+   +--------------+---------------+---------------+--------------------+---------------+
+   | Binary b1 b0 | Decimal Value | High Bit (b1) | Value - b1         | Set Bit Count |
+   +--------------+---------------+---------------+--------------------+---------------+
+   |      00      |       0       |       0       | 0 - 0 = 0 (00_2)   |       0       |
+   |      01      |       1       |       0       | 1 - 0 = 1 (01_2)   |       1       |
+   |      10      |       2       |       1       | 2 - 1 = 1 (01_2)   |       1       |
+   |      11      |       3       |       1       | 3 - 1 = 2 (10_2)   |       2       |
+   +--------------+---------------+---------------+--------------------+---------------+
+
+3. Bitwise Execution:
+   - Mask 0x55555555U:
+     In binary: 0101 0101 0101 ... 0101 (selects the even bit positions).
+   - (value >> 1U):
+     Shifts high bits (b1) into the position of low bits (b0).
+   - ((value >> 1U) & 0x55555555U):
+     Isolates the b1 bits in the low bit position of each 2-bit field.
+   - value - (...):
+     Simultaneously subtracts b1 from all 16 pairs.
+
+4. Why Subtraction Is Safe (No Borrow Propagation):
+   Because Value >= b1 is true for every 2-bit field (0>=0, 1>=0, 2>=1, 3>=1),
+   the difference is always >= 0. Subtraction NEVER borrows across 2-bit
+   boundaries.
+
+5. Why Subtraction Instead of Addition?
+   Naive addition: (value & 0x55555555U) + ((value >> 1U) & 0x55555555U)
+   - Requires 2 masks, 1 shift, 1 add = 4 instructions.
+   Subtraction trick: value - ((value >> 1U) & 0x55555555U)
+   - Requires 1 mask, 1 shift, 1 sub = 3 instructions (saves 1 instruction!).
+
+================================================================================
+STAGE 2: SUM ADJACENT 2-BIT FIELDS INTO 4-BIT NIBBLES
+================================================================================
+Code:
+    value = (value & 0x33333333U) + ((value >> 2U) & 0x33333333U);
+
+1. High-Level Goal:
+   - Combines adjacent 2-bit counts into eight 4-bit nibbles.
+   - Each nibble now stores a count in range [0, 4].
+
+2. Mathematical Principle:
+   Within each 4-bit nibble:
+       Nibble = [C_high][C_low]  (each count is in [0, 2])
+       Total 1s = C_high + C_low
+   Maximum sum: 2 + 2 = 4 (binary 0100).
+   A 4-bit field can hold up to 15 (1111), so 4 easily fits.
+
+3. Bitwise Execution:
+   - Mask 0x33333333U:
+     In binary: 0011 0011 0011 ... 0011 (selects the lower 2 bits of each nibble).
+   - (value & 0x33333333U):
+     Extracts all eight C_low counts.
+   - (value >> 2U):
+     Shifts all C_high counts into the position of C_low.
+   - ((value >> 2U) & 0x33333333U):
+     Masks out carry-over bits from neighboring nibbles, isolating C_high.
+   - Parallel Addition (+):
+     Sums C_low + C_high in parallel across all 8 nibbles.
+
+4. Critical Gotcha: Why Must We Mask BEFORE Adding?
+   - In Stage 2, max sum is 2 + 2 = 4 (0100_2).
+   - The value 4 requires 3 bits of storage!
+   - Because our input fields are only 2 bits wide, an unmasked addition would
+     spill the carry into bit 2 (the 3rd bit), colliding with the adjacent
+     unmasked count.
+   - Therefore, masking BEFORE addition is mandatory here.
+
+================================================================================
+STAGE 3: SUM ADJACENT 4-BIT NIBBLES INTO 8-BIT BYTES
+================================================================================
+Code:
+    value = (value + (value >> 4U)) & 0x0F0F0F0FU;
+
+1. High-Level Goal:
+   - Combines adjacent 4-bit counts into four 8-bit bytes.
+   - Each byte now stores the total count of set bits in that byte [0, 8].
+
+2. Mathematical Principle:
+   Each byte consists of two nibbles:
+       Byte = [N_high][N_low]  (each count is in [0, 4])
+       Total 1s = N_high + N_low
+   Maximum sum: 4 + 4 = 8 (binary 1000).
+
+3. The Big Optimization: Why Can We Add FIRST and Mask ONCE?
+   - Maximum sum is 8 (1000_2).
+   - Notice: 8 fits inside a 4-bit nibble! (nibble max capacity is 15).
+   - Because 8 <= 15, addition in the lower 4 bits NEVER produces a carry into
+     the upper 4 bits.
+   - When we do (value + (value >> 4U)):
+     * Lower 4 bits: receives clean sum (N_low + N_high) <= 8.
+     * Upper 4 bits: receives garbage (N_high + neighboring byte's nibble).
+   - Mask 0x0F0F0F0FU:
+     In binary: 0000 1111 0000 1111 ...
+     Wipes out the garbage in the upper 4 bits of all bytes at once.
+   - Saving: Only 1 mask needed instead of 2 masks!
+
+================================================================================
+STAGE 4: SUM ALL 4 BYTES (THE MULTIPLIER TRICK)
+================================================================================
+Code:
+    return (uint8_t)((value * 0x01010101U) >> 24U);
+
+1. High-Level Goal:
+   - Sums all 4 byte counts (B3 + B2 + B1 + B0) into the final total [0, 32].
+
+2. Mathematical Principle:
+   After Stage 3, the register contains 4 bytes:
+       value = [ B3 ] [ B2 ] [ B1 ] [ B0 ]    (where each Bi <= 8)
+
+   Notice what the constant 0x01010101U represents in powers of 2:
+       0x01010101U = 2^24 + 2^16 + 2^8 + 1
+
+   Multiplying value by 0x01010101U is algebraically identical to:
+       value * (2^24 + 2^16 + 2^8 + 1)
+       = (value << 24) + (value << 16) + (value << 8) + value
+
+3. Visualizing the Column Addition:
+   Each shifted term places bytes in the following columns:
+
+       value << 24:   [   B0   ] [   00   ] [   00   ] [   00   ]
+     + value << 16:   [   B1   ] [   B0   ] [   00   ] [   00   ]
+     + value << 8:    [   B2   ] [   B1   ] [   B0   ] [   00   ]
+     + value:         [   B3   ] [   B2   ] [   B1   ] [   B0   ]
+     --------------------------------------------------------------
+       Result:        [B0+B1+B2+B3] [ ... ]    [ ... ]    [  B0  ]
+                      (bits 31:24)
+
+   The top byte (bits 31:24) accumulates exactly B0 + B1 + B2 + B3!
+
+4. Why Lower Column Carries NEVER Corrupt the Top Byte:
+   - Column 2 (bits 23:16) accumulates: B0 + B1 + B2.
+   - Maximum value: 8 + 8 + 8 = 24.
+   - An 8-bit column can hold up to 255.
+   - Because 24 < 256, Column 2 NEVER produces a carry into Column 1 (bits 31:24).
+   - In fact, the maximum possible sum across all 32 bits is 32 (32 << 255).
+   - Hence, ZERO carry is generated into the top byte.
+
+5. Final Extraction:
+   - >> 24U: Shifts bits 31:24 down to the lowest byte (bits 7:0).
+   - (uint8_t): Casts result to 8-bit unsigned integer (or mask & 0xFF).
+
+--------------------------------------------------------------------------------
+COMPARISON: MULTIPLIER TRICK VS. TRADITIONAL SHIFT-AND-ADD
+--------------------------------------------------------------------------------
+Traditional Approach (Stages 4 & 5):
+    value = value + (value >> 8U);        // Stage 4: 16-bit sum
+    value = value + (value >> 16U);       // Stage 5: 32-bit sum
+    return (uint8_t)(value & 0x0000003FU);
+    Total operations: 2 shifts + 2 adds + 1 mask = 5 instructions.
+
+Multiplier Trick (Single Stage 4):
+    return (uint8_t)((value * 0x01010101U) >> 24U);
+    Total operations: 1 multiply + 1 shift + 1 cast = 2 instructions.
+
+Modern CPUs execute 32-bit integer multiplication in 1 cycle with dedicated
+hardware multipliers, making the Multiplier Trick significantly faster and
+more compact.
+
+================================================================================
+COMPLETE IMPLEMENTATION
+================================================================================
+uint8_t count_bits_swar(uint32_t value) {
+    // Stage 1: count pairs of bits (2-bit fields)
+    value = value - ((value >> 1U) & 0x55555555U);
+
+    // Stage 2: count nibbles (4-bit fields)
+    value = (value & 0x33333333U) + ((value >> 2U) & 0x33333333U);
+
+    // Stage 3: count bytes (8-bit fields)
+    value = (value + (value >> 4U)) & 0x0F0F0F0FU;
+
+    // Stage 4: sum all bytes using multiplier trick and extract
+    return (uint8_t)((value * 0x01010101U) >> 24U);
+}
+================================================================================

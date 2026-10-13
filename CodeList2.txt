@@ -1,0 +1,46 @@
+C Fundamentals
+	• Find largest of two/three numbers
+	• Print prime numbers in a range
+Number & Logic
+	• Armstrong number
+	• Product of digits
+	• LCM of two numbers
+	• Find largest digit in a number
+Arrays
+	• Find missing element in an array
+	• Sum of elements
+	• Find duplicates
+	• Find common elements
+	• Find pair with given sum
+	• Maximum subarray sum
+Strings
+	• Remove duplicate characters
+	• Find first non-repeating character
+	• Reverse words
+	• Check anagrams
+	• Convert case
+Pointers
+	• Array sum using pointers
+	• Implement memcpy and memset using pointers
+Bit Manipulation
+	• Clear lower set bit
+	• Check power of two
+	• Reverse bits
+	• Extract and update bitfield
+	• Find unique element using XOR
+Memory & Structures
+	• Memory layout of C program
+	• Stack vs. heap
+	• Memory leaks
+	• Dangling/null pointers
+	• simple memory Pool
+	• Fixed size memory allocator
+	• Static vs. dynamic allocation
+	• Structure containing pointers
+	• Structure vs. union memory demonstration
+	• Bit feild structure
+Data Structures & Embedded Specific
+	• Detect loop in a singly linked list
+	• Circular queue
+	• System endianness
+	• Byte swapping
