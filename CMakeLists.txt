@@ -95,6 +95,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.2_Checking_if_a_bit_is_set.c
     tests/test_count_set_bits.cpp
     6_Bit_Manipulation/6.3_Counting_set_bits.c
+    tests/test_parity.cpp
+    6_Bit_Manipulation/6.4_Checking_even_or_odd_parity.c
 )
 
 # Link to gtest
