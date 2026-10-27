@@ -97,6 +97,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.3_Counting_set_bits.c
     tests/test_parity.cpp
     6_Bit_Manipulation/6.4_Checking_even_or_odd_parity.c
+    tests/test_swap_xor.cpp
+    6_Bit_Manipulation/6.5_Swapping_using_XOR.c
 )
 
 # Link to gtest
