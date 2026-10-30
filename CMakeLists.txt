@@ -99,6 +99,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.4_Checking_even_or_odd_parity.c
     tests/test_swap_xor.cpp
     6_Bit_Manipulation/6.5_Swapping_using_XOR.c
+    tests/test_bit_range.cpp
+    6_Bit_Manipulation/6.6_Using_masks_to_set_or_clear_multiple_bits.c
 )
 
 # Link to gtest
