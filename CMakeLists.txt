@@ -101,6 +101,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.5_Swapping_using_XOR.c
     tests/test_bit_range.cpp
     6_Bit_Manipulation/6.6_Using_masks_to_set_or_clear_multiple_bits.c
+    tests/test_factorial.cpp
+    7_Recursion/7.1_Factorials.c
 )
 
 # Link to gtest
@@ -112,6 +114,7 @@ target_compile_definitions(run_tests PRIVATE TESTING)
 # Include the source directories so headers can be found
 target_include_directories(run_tests PRIVATE 
     1_Basic_C_Programming
+    7_Recursion
     ${GTEST_INCLUDE_DIRS}
 )
 
