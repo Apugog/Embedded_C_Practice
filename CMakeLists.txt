@@ -103,6 +103,8 @@ add_executable(run_tests
     6_Bit_Manipulation/6.6_Using_masks_to_set_or_clear_multiple_bits.c
     tests/test_factorial.cpp
     7_Recursion/7.1_Factorials.c
+    tests/test_fibonacci_recursion.cpp
+    7_Recursion/7.2_Fibonacci_sequences.c
 )
 
 # Link to gtest
