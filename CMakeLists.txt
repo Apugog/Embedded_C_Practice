@@ -105,6 +105,8 @@ add_executable(run_tests
     7_Recursion/7.1_Factorials.c
     tests/test_fibonacci_recursion.cpp
     7_Recursion/7.2_Fibonacci_sequences.c
+    tests/test_sum_of_digits.cpp
+    7_Recursion/7.3_Sum_of_digits.c
 )
 
 # Link to gtest
